@@ -1,0 +1,61 @@
+<!--<nav class="navbar nav-bar navbar-expand-md fixed-top   navbar-inverse bg-inverse">-->
+<nav class="navbar  nav-bar navbar-expand-md navbar-dark fixed-top bg-dark  bg-inverse">
+
+  <div class="container">
+    <a class="navbar-brand hidden-xs-down" title="interweb" href="/">&nbsp;</a>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto left-cats">
+        <li class="nav-item">
+          <a class="nav-link" href="/">{{'NAVBAR.cover' | translate}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" href="/" routerLink="document">{{'NAVBAR.home' | translate}} <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">{{'NAVBAR.reports' | translate}} </a>
+        </li>
+
+      </ul>
+      <div class="cat-right">
+
+
+        <div class="navbar-nav mr-auto services-mobile">
+
+          <div class="nav-item select-menu  dropdown " ngbDropdown>
+            <a class="nav-link" ngbDropdownToggle data-toggle="dropdown2">
+              <i class="fa  fa-th" aria-hidden="true"> </i>
+              <span class="our-services">{{'NAVBAR.additionalServices' | translate}} </span><span class="sr-only">(current)</span>
+            </a>
+
+            <div class="nav-item dropdown-menu  dropdown-left   dropdown-menu-right-align   po-abs" style="width: 250px;" ngbDropdownMenu aria-labelledby="dropdownMenuButton2">
+              <our-services></our-services>
+            </div>
+          </div>
+          <div class="nav-item select-menu dropdown" ngbDropdown>
+            <a class="nav-link" ngbDropdownToggle data-toggle="dropdown1">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span class="our-services"> {{'NAVBAR.profile' | translate}}</span><span class="sr-only">(current)</span>
+            </a>
+
+            <ul class="nav-item dropdown-menu  dropdown-left   dropdown-menu-right-align   po-abs " ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+
+              <!--<hr role="separator" class="dropdown-divider"/>-->
+              <li>
+                <a class="dropdown-item" (click)="logoutClick()" href="../">
+                  {{'LOGIN.signOut' | translate}} <i class="fa fa-sign-out" aria-hidden="true"> </i>
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</nav>
+

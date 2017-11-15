@@ -1,0 +1,160 @@
+<form-wizard>
+  <wizard-step class="wizardContent" title="{{'CUSTOMER_PRESS.stepOne' | translate}}">
+
+    <ul style="padding-top: 10%;">
+      <li>{{'CUSTOMER_PRESS.step1Content1' | translate}}</li>
+      <li>{{'CUSTOMER_PRESS.step1Content2' | translate}}</li>
+      <li>{{'CUSTOMER_PRESS.step1Content3' | translate}}</li>
+      <li>
+        {{'CUSTOMER_PRESS.step1Content4' | translate}}
+        <ul>
+          <li>{{'CUSTOMER_PRESS.step1Content5' | translate}}</li>
+          <li>{{'CUSTOMER_PRESS.step1Content6' | translate}}</li>
+          <li>{{'CUSTOMER_PRESS.step1Content7' | translate}}</li>
+        </ul>
+      </li>
+      <li>{{'CUSTOMER_PRESS.step1Content8' | translate}}</li>
+    </ul>
+
+
+
+
+  </wizard-step>
+  <wizard-step title="{{'CUSTOMER_PRESS.stepTwo' | translate}}" [showNext]="false" [showPrev]="false" [isValid]="true">
+
+    <div style="text-align: center; margin-top: 25px;">
+      <label>
+        {{'CUSTOMER_PRESS.wizardPageTwoContent' | translate}}
+      </label><br>
+
+      <input style="margin-top: 20px;" type="text" [(ngModel)]="name">
+
+      <span *ngIf="errorMessage" class="errorMessage row justify-content-center">{{'CUSTOMER_PRESS.errorMessage' | translate}}</span>
+      <button type="button" class="btn   btn-primary float-left  pre-nxt-button" (click)="goPrev()">{{'CUSTOMER_PRESS.previous' | translate}}</button>
+
+      <button type="button" class="btn   btn-primary float-right  pre-nxt-button" (click)="nameController(name)" [disabled]='name===""'>{{'CUSTOMER_PRESS.next' | translate}}</button>
+    </div>
+  </wizard-step>
+  <wizard-step title="{{'CUSTOMER_PRESS.stepThree' | translate}}" (onComplete)="onComplete()">
+
+
+    <div [ngSwitch]="isCompleted">
+      <div *ngSwitchDefault>
+        <div class="wiz-content" style="padding: 1%;">
+          <div class="stepTitle">
+            {{'CUSTOMER_PRESS.listingType' | translate}}
+          </div>
+          <br>
+          <div>
+            <label>
+              <input type="radio" name="radiogroup" [checked]="byPage==true" [value]="cond" (change)="byPage=!byPage">{{'CUSTOMER_PRESS.sortByPage' | translate}}
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="radio" name="radiogroup" [checked]="byPage==false" [value]="cond" (change)="byPage=!byPage">{{'CUSTOMER_PRESS.sortByDate' | translate}}
+            </label>
+          </div>
+          <br>
+          <hr>
+          <div class="stepTitle">
+            {{'CUSTOMER_PRESS.selectDesing' | translate}}
+          </div>
+          <br>
+          <div class="desc">
+            <table align="center">
+              <tbody>
+                <tr>
+                  <td width="120">
+                    {{'CUSTOMER_PRESS.textColor' | translate}}
+                  </td>
+                  <td width="120">
+                    {{'CUSTOMER_PRESS.backgroundColor' | translate}}
+                  </td>
+                  <td width="120">
+                    {{'CUSTOMER_PRESS.titleColor' | translate}}
+                  </td>
+                  <td width="120">
+                    {{'CUSTOMER_PRESS.titleBackgroundColor' | translate}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input [(colorPicker)]="cssSettings.textColor" [style.background]="cssSettings.textColor" />
+                  </td>
+                  <td>
+                    <input [(colorPicker)]="cssSettings.backgroundColor" [style.background]="cssSettings.backgroundColor" />
+                  </td>
+                  <td>
+                    <input [(colorPicker)]="cssSettings.titleColor" [style.background]="cssSettings.titleColor" [cpPosition]="'left'" />
+                  </td>
+                  <td>
+                    <input [(colorPicker)]="cssSettings.titleBackgroundColor" [style.background]="cssSettings.titleBackgroundColor" [cpPosition]="'left'" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {{'CUSTOMER_PRESS.textFont' | translate}}
+                  </td>
+                  <td>
+                    {{'CUSTOMER_PRESS.fontSize' | translate}}
+                  </td>
+                  <td>
+                    {{'CUSTOMER_PRESS.listBackgroundColor' | translate}}
+                  </td>
+                  <td>
+                    {{'CUSTOMER_PRESS.linkColor' | translate}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="text" value="Verdana" [(ngModel)]="cssSettings.textFont">
+                  </td>
+                  <td>
+                    <input type="number" value="12" [(ngModel)]="cssSettings.fontSize">
+                  </td>
+                  <td>
+                    <input [(colorPicker)]="cssSettings.listBackgroundColor" [style.background]="cssSettings.listBackgroundColor" [cpPosition]="'left'" />
+                  </td>
+                  <td>
+                    <input [(colorPicker)]="cssSettings.linkColor" [style.background]="cssSettings.linkColor" [cpPosition]="'left'" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <hr>
+            <b class="row">
+              {{'CUSTOMER_PRESS.exampleView' | translate}}
+            </b>
+
+            <img *ngIf="byPage" src="../../../../assets/img/customer-press-wizard/sortbyPageWizard.PNG" />
+            <img *ngIf="!byPage" src="../../../../assets/img/customer-press-wizard/sortByDate.png" />
+
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngSwitchCase="true">
+
+        <div class="stepTitle">
+          {{'CUSTOMER_PRESS.congratulations' | translate}}
+        </div>
+        <div class="desc" id="HtmlCode">
+          {{'CUSTOMER_PRESS.addownWebsite' | translate}}
+          <pre style="font-family: Lucida Console; font-size: 12px; margin: 4px; border: 1px dashed #ccc; padding: 4px; background: #eee">
+    {{IframeLink}}
+</pre>
+          {{'CUSTOMER_PRESS.changeHeight' | translate}}<br>
+        </div>
+
+        <button type="button" class="btn btn-primary float-right pre-nxt-button " (click)="close()" style="margin-top: 30px !important;margin-right: 10px !important;">{{'CUSTOMER_PRESS.close' | translate}}</button>
+
+      </div>
+
+    </div>
+  </wizard-step>
+</form-wizard>
+
+

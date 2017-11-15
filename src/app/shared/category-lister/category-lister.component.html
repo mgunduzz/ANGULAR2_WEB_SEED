@@ -1,0 +1,63 @@
+ 
+
+<!--<div class="selectedCategories category-main-class" *ngIf="selectedCats.length>0" >
+  <span *ngFor="let selectedCat of selectedCats">
+    {{selectedCat.name}} -
+
+  </span>
+</div>-->
+
+<div *ngIf="isMobile" class="category-list-side-bar category-main-class" style="display: flex; cursor: pointer;" (click)="showCategories=!showCategories">
+    
+  <div style="flex-grow: 1;">
+    {{'DOCUMENT_LISTER.categories' | translate}}
+  </div> <i class="fa fa-caret-down" [ngClass]="{'fa-caret-up':showCategories}" aria-hidden="true" style="width: 50px; text-align: right; margin-right: 2%;"></i>
+
+</div>
+<hr style="margin: 0 !important"/>
+<div class="category-list-side-bar category-main-class cats-main" style="min-height: 150px !important" [style.display]="showCategories?'block':'none'" [@shrinkOut]>
+    <div class="searchArea">
+        <div class="row no-gutters search-input-area  justify-content-between">
+            <input type="text" [(ngModel)]="value" class="no-border form-control-sm col form-control " (keyup.enter)="searchWord=value" placeholder="{{'DOCUMENT_LISTER.searchWord' | translate}}">
+
+            <div *ngIf="!(value==''|| value==undefined) || !(searchWord==''|| searchWord==undefined)" class="col-1">
+                <i class="fa fa-times clear-search-text" aria-hidden="true" (click)="value='';searchWord=''"></i>
+            </div>
+
+        </div>
+
+        <button class="btn btn-sm btn-outline-primary" (click)="searchWord=value" [disabled]="!value"  type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+    </div>
+    <ol>
+      <li *ngFor="let cat of (categories | async ) | categorySearch:searchWord  ; let i=index " [ngClass]="{'disable-parent-cat':(isDocumentCountActive && ((cat.count==0) && (cat.isChecked==false)))}">
+        <div class="parent-category">
+          <div class="parent-category-input">
+            <input class="selectAllSubCats" type="checkbox" [(ngModel)]="cat.isChecked" (change)="cat.isChecked=!cat.isChecked;selectAllSubCats(cat);">
+          </div>
+          <div class="category-parent-item" (click)="subCatToggle(cat)">
+            <div [style.font-weight]="cat.isActive?'bold':''"> 
+               <span class="cat-name" [ngbTooltip]="cat.value.length>25? cat.value : ''">{{cat.value }}</span> 
+              <i *ngIf="((cat.count>0) || (cat.isChecked==true))" class="fa" style="float: right;" [ngClass]="{'fa-caret-down':cat.isActive, 'fa-caret-right':!cat.isActive}" aria-hidden="true"></i>
+            </div>
+          </div>
+
+        </div>
+        <div class="child" *ngIf="cat.isActive && cat.subCategories.length > 0 " [@shrinkOut]>
+          <ul style="padding: 0; margin-top: 10px; margin-bottom: 10px">
+            <li *ngFor="let subCat of cat.subCategories  ; let i=index; trackBy : trackByKey" [hidden]="(isDocumentCountActive && (subCat.count <= 0 && subCat.checked==false))">
+              <input class="subInput" style="min-width:10%;" type="checkbox" #check [(ngModel)]="subCat.checked" (change)="getSubCategory(subCat,cat)">
+              <div class="subCat-item" (click)="check.click()"  placement="bottom"  [ngbTooltip]="subCat.value.length>25? subCat.value : ''" [style.font-weight]="subCat.checked?'bold':''">
+                <span class="subcat-value"  style="cursor: pointer;" >{{subCat.value}}
+                </span>
+                  <span [hidden]="!isDocumentCountActive" style="width: 25px;" >{{subCat.count >= 0 ? subCat.count : ''}}</span>
+
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div> 
+

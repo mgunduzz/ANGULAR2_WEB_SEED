@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h6 class="modal-title">{{'FEEDBACK.feedback' | translate}}</h6>
+
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+</div>
+
+<div style="font-size: 11px;font-style: italic;     padding: 5% 5% 2% 3%;    border-bottom: 1px solid rgb(233, 236, 239);">
+    <span class="">{{'FEEDBACK.selectedNew' | translate}} : {{document.title}}</span>
+
+</div>
+
+<div style="padding: 5% 5% 10% 5%;">
+
+
+    <feedback [document]="document"></feedback>
+
+
+</div>

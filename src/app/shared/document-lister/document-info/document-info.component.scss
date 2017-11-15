@@ -1,0 +1,277 @@
+/*.total-count {
+    font-size: 12px !important;
+    padding-bottom: 2px;
+    padding-top: 0.5%;
+    padding-right: 2.5% !important;
+}
+
+
+.label {
+    padding: 0px 5px;
+    min-width: 5%;
+    height: 15px;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 204px;
+    color: white;
+    margin-left: 0.5%;
+}
+
+
+@media(max-width: 479px) and (min-width: 320px) {
+    .label {
+        width: 50px;
+        height: 13px;
+        font-size: 8px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .label {
+        width: 20%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .label {
+        width: 13%;
+    }
+}
+
+.tv {
+    background-color: #edbb24;
+}
+
+.press {
+    background-color: #8cb98e;
+}
+
+.radio {
+    background-color: #fda185;
+}
+
+.internet {
+    background-color: #97d8f5;
+}
+
+.newsPapers {
+    background-color: #607D8B;
+}
+
+.totalCount {
+    background-color: #ababab;
+}
+
+.social {
+    background-color: #5fa8bf;
+}
+
+.newsAgency {
+    background-color: #9c88bf;
+}
+
+.agenda {
+    background-color: #a3d8c6;
+}
+
+.table {
+    vertical-align: middle;
+    display: table;
+}
+
+$switch-width: 38;
+$switch-height: 23;
+$switch-toggle-width: 15;
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin marginBgTransition($margin,$bg) {
+    -webkit-transition: $margin,$bg;
+    -moz-transition: $margin,$bg;
+    -ms-transition: $margin,$bg;
+    -o-transition: $margin,$bg;
+    transition: $margin,$bg;
+}
+
+
+///for switch
+.cmn-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+
+.cmn-toggle + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+input.cmn-toggle-round-flat + label {
+    padding: 2px;
+    width: $switch-width+px;
+    height: $switch-height +px;
+    background-color: #dddddd;
+
+    @include border-radius(30px);
+    @include transition(background 0.4s);
+}
+
+input.cmn-toggle-round-flat + label:before, input.cmn-toggle-round-flat + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+}
+
+input.cmn-toggle-round-flat + label:before {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    background-color: #fff;
+
+    @include border-radius(30px);
+    @include transition(background 0.4s);
+}
+
+input.cmn-toggle-round-flat + label:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: $switch-toggle-width + px;
+    background-color: #dddddd;
+
+    @include border-radius(30px);
+    @include marginBgTransition(margin 0.4s, background 0.4s);
+}
+
+input.cmn-toggle-round-flat:checked + label {
+    background-color: #8ce196;
+}
+
+input.cmn-toggle-round-flat:checked + label:after {
+    margin-left: 15px;
+    background-color: #8ce196;
+}*/
+
+
+.total-count {
+    font-size: 12px !important;
+    padding-bottom: 1%;
+    padding-top: 0.5%;
+    padding-right: 1.5% !important;
+}
+
+
+.label {
+    padding: 0px 5px;
+    min-width: 5%;
+    height: 15px;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 204px;
+    color: white;
+    margin-left: 0.5%;
+}
+
+
+/*@media(max-width: 479px) and (min-width: 320px) {
+    .label {
+        width: 50px;
+        height: 13px;
+        font-size: 8px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .label {
+        width: 20%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .label {
+        width: 13%;
+    }
+}*/
+
+.tv {
+    background-color: #edbb24;
+}
+
+.press {
+    background-color: #8cb98e;
+}
+
+.radio {
+    background-color: #fda185;
+}
+
+.internet {
+    background-color: #97d8f5;
+}
+
+.newsPapers {
+    background-color: #607D8B;
+}
+
+.totalCount {
+    background-color: #ababab;
+}
+
+.social {
+    background-color: #5fa8bf;
+}
+
+.newsAgency {
+    background-color: #9c88bf;
+}
+
+.agenda {
+    background-color: #a3d8c6;
+}
+
+.table {
+    vertical-align: middle;
+    display: table;
+}
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .total-count {
+        padding-right: 2% !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .total-count {
+        padding-right: 3.3% !important;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .total-count {
+        padding-bottom: 3% !important;
+    }
+
+    .label {
+        margin-top: 1%;
+    }
+}

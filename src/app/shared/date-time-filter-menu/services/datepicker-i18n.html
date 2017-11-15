@@ -1,0 +1,35 @@
+﻿
+
+
+
+
+<div class="calendar left" style="    padding: 5px;">
+  <div class="daterangepicker_input">
+    <div class="" id="documentFilter">
+      <div class="input-group" id="documentFilter">
+        <span class="form-control form-control-sm " name="daterange" id="documentFilter">
+          {{ startDatePicker.day }}-{{ startDatePicker.month }}-{{ startDatePicker.year }}
+        </span>
+        <div class="input-group-addon" id="documentFilter">
+          <i class="fa fa-calendar" aria-hidden="true" id="documentFilter"></i>
+        </div>
+      </div>
+    </div>
+    <ngb-datepicker style="margin-top: 5%;" [(ngModel)]="startDatePicker" #startDatePickerNavigate  [minDate]="minDate" [maxDate]="maxDate" class="time-picker"></ngb-datepicker>
+  </div>
+</div>
+<div class="calendar right" style="    padding: 5px;">
+  <div class="daterangepicker_input">
+    <div class="small-screen-filter-margin ">
+      <div class="input-group">
+        <span class="form-control form-control-sm " name="daterange">
+          {{ endDatePicker.day }}-{{ endDatePicker.month }}-{{ endDatePicker.year }}
+        </span>
+        <div class="input-group-addon">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ngb-datepicker style="margin-top: 5%;" [(ngModel)]="endDatePicker" #endDatePickerNavigate [minDate]="minDate" [maxDate]="maxDate" class="time-picker"></ngb-datepicker>
+</div>

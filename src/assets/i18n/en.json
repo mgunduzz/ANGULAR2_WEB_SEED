@@ -1,0 +1,420 @@
+{
+  "HOME": {
+    "TITLE": "Hello Angular with ngx-translate!",
+    "SELECT": "Change language"
+  },
+  "GENERAL": {
+    "loading": "Loading...",
+    "success": "Process Successfully Performed...",
+    "failed": "An error occurred during the operation...",
+    "error": "Warning!"
+
+  },
+  "DOCUMENT_TYPE": {
+    "0": "All",
+    "2": "Press",
+    "4": "Tv",
+    "8": "Internet",
+    "16": "Social Media",
+    "32": "News Agency",
+    "64": "Radio",
+    "128": "News Agency",
+    "1": "News Papers",
+    "256": "Logs",
+    "custom": "Custom"
+
+  },
+
+  "DOCUMENT_TYPE_FIRST_LETTER": {
+    "0": "All",
+    "2": "P",
+    "4": "T",
+    "8": "I",
+    "16": "S",
+    "32": "N",
+    "64": "R",
+    "128": "A",
+    "1": "P",
+    "256": "L",
+    "custom": "C"
+  },
+  "NAVBAR": {
+    "home": "News",
+    "cover": "Cover",
+    "reports": "Reports",
+    "action": "Action",
+    "anotherAction": "Another action",
+    "profile": "Profile",
+    "additionalServices": "Services"
+  },
+  "LOGIN": {
+    "title": "Welcome to Interweb",
+    "subTitle": "Please enter your user number and your exclusive password.",
+
+    "username": "User",
+    "usernameRequired": "Username is Required.",
+    "password": "Password",
+    "passwordRequired": "Password is Required.",
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
+  },
+  "DOCUMENT_TYPE_ICON": {
+    "2": "press",
+    "4": "tv",
+    "8": "internet",
+    "16": "social",
+    "32": "newsAgency",
+    "64": "radio",
+    "128": "agenda",
+    "1": "newsAgency"
+  },
+  "DOCUMENT_LISTER": {
+    "totalCount": "Total News Count",
+    "selectedNewes": "Selected New:",
+    "title": "Title",
+    "viewDate": "Date",
+    "publishDate": "Date",
+    "mediaName": "Publication Name",
+    "documentTypeId": "Mecra",
+    "searchWord": "Category Search...",
+    "columnist": "Columnist",
+    "noNewsFound": "There is no news",
+    "categories": "Categories",
+    "sales": "Sales",
+    "pageNumber": "Page No"
+  },
+  "PAGINATION_BAR": {
+    "first": "First",
+    "previous": "Previous",
+    "next": "Next",
+    "last": "Last",
+    "goSelectedPage": "Go",
+    "onPageViewCount": "View Count:"
+
+  },
+  "FILTER": {
+    "SearchWord": "Search Word...",
+    "showFilters": "Show Filters",
+    "hideFilters": "Hide Filters",
+    "customDocTypeFilter": "Multiple Documant Type Selection",
+    "search": "Search",
+    "cancel": "Cancel",
+    "custom": "Custom"
+  },
+  "Middle_Menu": {
+    "news": "News",
+    "ads": "Ads"
+  },
+  "MISSION_FILTER": {
+    "medias": "Publication Name",
+    "mediaTypes": "Media Type",
+    "periods": "Period",
+    "coverages": "Coverages",
+    "docContents": "Content",
+    "mediaCities": "City",
+    "brodcastName": "Broadcast Name",
+    "search": "Search",
+    "clear": "Clear",
+    "Search...": "Search...",
+    "filterTranslated": "Filter Translation",
+    "selectAll": "Select All",
+    "selectedDocTypes": "Document Type"
+  },
+  "EXPORTER": {
+    "pdf": "Save as Pdf",
+    "xml": "Save as XML",
+    "ppt": "Save as PowerPoint",
+    "xls": "Save as Excel",
+    "html": "Save as HTML",
+    "basket": "Basket",
+    "mizanpaj": "Save as Mizanpaj",
+    "word": "Save as Word",
+    "downloadFile": "Download",
+    "interview": "Interview",
+    "mail": "Send Mail",
+    "selectedDocCount": "Total Selected New: ",
+    "removeSelectedDoc": "Remove Selections",
+    "customerPress": "Customer Press",
+    "analysis": "Analysis for Press"
+
+
+  },
+  "DOC_VIEWER_TOOLBAR": {
+    "PREVIOUS_DOCUMENT": "Previous document",
+    "NEXT_DOCUMENT": "Next document",
+    "PREVIOUS_STREAM": "Previous Stream",
+    "NEXT_STREAM": "Next stream",
+    "FIRST_STREAM": "First stream",
+    "LAST_STREAM": "Last stream",
+    "ZOOM_IN": "Zoom in",
+    "ZOOM_OUT": "Zoom out",
+    "EXPAND": "Expand",
+    "ORIGINAL_SIZE": "Orginal Size",
+    "HORIZANTAL_EXPAND": "Horizantal Expand",
+    "VERTICAL_EXPAND": "Vertical Expand",
+    "DOWNLOAD_AS_PDF": "Download as pdf",
+    "DOWNLOAD_AS_MIZANPAJ": "Download as Mizanpaj",
+    "ADD_TO_BASKET": "Add to basket",
+    "DOWNLOAD_AS_IMG": "Download as img",
+    "SHOW_DIA": "Show dia",
+    "SEND_MAIL": "Send mail",
+    "feedback": "Send Feedback",
+    "share": "Share",
+    "textView": "New's Text",
+    "imageView": "New's Image",
+    "print": "Print",
+    "downloadNew": "Save"
+
+
+
+  },
+  "STREAM_CONTAINER": {
+    "SHOW": "Show Keywords",
+    "HIDE": "Hide Keywords",
+    "FOUNDED_KEYWORDS": "Founded Keywords",
+    "MEDIA_NAME": "Media name",
+    "TITLE": "Title",
+    "CITY": "City",
+    "CONTENT": "Content",
+    "DATE": "Date",
+    "PAGE": "Page",
+    "SALES": "Sales",
+    "DURATION": "Duration",
+    "BROADCAST_NAME": "Broadcast name",
+    "downloadNewsPage": "Download Whole Page",
+    "CURRENTINTERNETPAGE": "Current Page",
+    "PAGES": "Pages"
+  },
+  "BASKET_LIST": {
+    "BASKET_OPERATIONS": "Basket Operations",
+    "MY_BASKET": "My Basket",
+    "ADD_SELECTED_DOCS_TO_BASKET": "Add selected docs to basket",
+    "EMPTY_BASKET": "Empty basket",
+    "GO_TO_BASKET": "Go to basket",
+    "DELETE_BASKET": "Delete basket",
+    "BASKET_IS_EMPTY": "Basket is empty",
+    "BASKET_SELECTED_DOCUMENT": "  news selected.",
+    "BASKET_SELECTED_DOCUMENT_TOTAL": "Total",
+    "NEW_BASKET": "New Basket"
+  },
+  "BASKET_LISTER": {
+    "basketName": "has",
+    "totalItemCount": "articles in total"
+  },
+  "BASKET_LISTER_SORTING": {
+    "1": "By Media Type",
+    "2": "By Publish Date",
+    "3": "By Media Name",
+    "4": "By Title ",
+    "5": "By Category",
+    "documentNotFound": "No News Added To The Selected Basket."
+
+  },
+  "FEEDBACK": {
+    "sendername": "Name",
+    "note": "Note",
+    "email": "Email",
+    "select_at_least_one_err_type": "At least one error type must be selected",
+    "email_pattern_error": "Please enter a valid email adress",
+    "feedback": "FEEDBACK",
+    "selectedNew": "Selected New",
+    "send": "Send"
+
+  },
+  "OUR_SERVICES": {
+    "basket": "Basket",
+    "agenda": "Agenda",
+    "tvArchive": "Tv Archive",
+    "pressArchive": "Press Archive",
+    "pdf": "PDF",
+    "mizanpaj": "Mizanpaj",
+    "snapshot": "Snapshot",
+    "text": "News Text",
+    "downloadFile": "Download",
+    "translate": "Translation",
+    "analysis": "Online Analysis",
+    "customerPress": "Customer Press",
+    "columnist": "Columnists"
+
+  },
+  "EXPORTER_MODAL": {
+    "pdf": "Save as PDF",
+    "ppt": "Save as PowerPoint",
+    "mizanpaj": "Save as Mizanpaj",
+    "isCover": "Is With Cover",
+    "highlight": "Select Found Keywords",
+    "reportTag": "Report Tag:",
+    "word": "Save as Word",
+    "isAddDocuments": "Add Documents to Excel ?",
+    "analysisExcel": "Save as Excel",
+    "multiPdf": "Create PDF For Each News",
+    "snapshot": "Download Snapshoot",
+    "docViewerPdf": "Print",
+    "allPage": "All Pages",
+    "onlyOnePage": "Only Selected Page"
+
+
+
+  },
+  "AGENDA": {
+    "agenda": "Agenda",
+    "startDate": "Start Date :",
+    "endDate": "End Date :",
+    "search": "Search",
+    "date": "Date",
+    "title": "Title",
+    "share": "Share",
+    "word": "Save As Word",
+    "mail": "Send e-Mail",
+    "print": "Print",
+    "close": "Close"
+  },
+  "MAILING": {
+    "SEND_MAIL_SELECT_NEWS": "Mail Service",
+    "SENDER_NAME": "Sender Name",
+    "SUBJECT": "Subject",
+    "SELECTED_EMAILS": "emails selected",
+    "ATTACHMENT": "Attachment",
+    "BODY": "Body",
+    "MAIL_VISUAL_SETTINGS": "Mail visual settings",
+    "SHOW_ONLY_CATEGORIES": "Show only categoryies",
+    "SHOW_SUB_CATEGORIES": "Open sub categories",
+    "SHOW_NEWS": "Open news",
+    "SHOW_NEW_MEDIAS": "Open news medias",
+    "MAIL_LIST": "Mail List",
+    "GROUP_PROCESS": "Group Process",
+    "NAME": "Name Surname",
+    "MAIL": "Email",
+    "ALL_MAIL_LIST": "All Mails",
+    "SELECT": "Select",
+    "GROUP_NAME": "Group Name",
+    "SEND": "Send",
+    "SHOW_TYPE": "Show Type",
+    "MAIL_TO": "Mail to",
+    "THERE_IS_NO_MAIL": "There is no email for this group",
+    "SENDING_TYPE": "Send Type",
+    "MAIL_SELECTED": "mail selected",
+    "DOCUMENT_SELECTED": "document selected"
+  },
+  "CUSTOMER_PRESS": {
+    "removeQuestion": "Do You Want To Delete The Selected Press ?",
+    "removeQuestionNew": "Do You Want To Delete The Selected News ?",
+    "customerPress": "Press",
+    "totalCount": "Total : ",
+    "default": "Default",
+    "addNews": "+ Add News",
+    "createToNewCustomerPress": "Create New Customer Press",
+    "wizard1Content": "trContent",
+    "wizardPageTwoContent": "Enter the name of 'Customer Press' you want to use.",
+    "stepOne": "1.Step",
+    "stepTwo": "2.Step",
+    "stepThree": "3.Step",
+    "stepFour": "4.Step",
+    "listingType": "Please select your listing type",
+    "sortByPage": "By Page",
+    "sortByDate": "By Date",
+    "selectDesing": "Set design is compatible with your site.",
+    "textColor": "Texy Color: ",
+    "backgroundColor": "Background Color: ",
+    "titleColor": "Title Color: ",
+    "titleBackgroundColor": "Title Background Color: ",
+    "textFont": "Text Font: ",
+    "fontSize": "Font Size: ",
+    "listBackgroundColor": "List Background Color: ",
+    "linkColor": "Link Color: ",
+    "exampleView": "Example View",
+    "congratulations": "Congratulations",
+    "addownWebsite": "Add the following HTML code to the relevant page of your website in order to use the 'Customer Press' application.",
+    "changeHeight": "You can change the height property of this code according to your own page.",
+    "removeSelections": "Remove Selections",
+    "step1Title": "Welcome to the 'Customer Press' screen.",
+    "step1Content1": "With this application, you will be able to see the news that you have selected on your website 'Press' page.",
+    "step1Content2": "You can add Press, Television, Radio and Internet news.",
+    "step1Content3": "You can use the news items on the pages you want by creating multiple 'Press' applications.",
+    "step1Content4": "For this:",
+    "step1Content5": "Step 2, you need to give a name to your application.",
+    "step1Content6": "Step 3, you need to choose the colors and appearance appropriate to your site's design.",
+    "step1Content7": "Step 4, you will add the HTML code we will give you to the relevant page of your website.",
+    "step1Content8": "You can click 'Next' button to continue.",
+    "removeSelectedPress": "Remove Selected Press",
+    "close": "Close",
+    "errorMessage": "This Name Already Exists.",
+    "next": "Next",
+    "previous": "Previous",
+    "done": "Done"
+
+  },
+  "COLUMNISTS": {
+    "columnists": "Columnists",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "search": "Search",
+    "searchWord": "Search Word",
+    "medias": "Media Name",
+    "messageTitle": "Our Dear Customer,",
+    "message": "You can reach the columnist by writing the publication name or the column name."
+  },
+  "ANALYSIS": {
+    "search": "Search",
+    "name": "Name",
+    "mediaCoverage": "Media Coverage",
+    "numberOfClippings": "Number Of Clippings",
+    "circulation": "Circulation",
+    "reach": "Reach",
+    "aves": "AVEs",
+    "listOfArticles": "List Of Articles",
+    "publicationSpace": "Publication Space",
+    "publicationType": "Publication Type",
+    "newspaper": "Newspapaer",
+    "newspaperAttachment": "Newspaper Attachment",
+    "magazine": "Magazine",
+    "magazineAttachment": "Magazine Attachment",
+    "national": "National",
+    "regional": "Regional",
+    "local": "Local",
+    "downloadExcel": "Excel"
+  },
+  "WARNING_MESSAGE": {
+    "right": ": your are not authorized to accses this section",
+    "contactNumber": "Please contact (212) 325 22 33 or (312) 286 10 10.",
+    "2": "Press",
+    "4": "Tv",
+    "8": "Internet",
+    "16": "Social Media",
+    "32": "News Agency",
+    "64": "Radio",
+    "128": "News Agency",
+    "1": "News Papers",
+    "256": "Logs",
+    "tvArchive": "Tv Archive",
+    "pressArchive": "Press Archive",
+    "customerPress": "Customer Press"
+  },
+  "IMAGE_VIEWER": {
+    "saveAs": "Save as Image",
+    "saveAsFullPage": "Save as Image With Full Newspaper Page"
+  },
+  "TEXT_VIEWER": {
+    "contetDoesntExits": "No new's text has been added."
+  },
+  "DATE_TIME_PICKER": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "last7Day": "Last 7 Day",
+    "last1Month": "Last 1 Month",
+    "last3Month": "Last 3 Month",
+    "last6Month": "Last 6 Month",
+    "last12Month": "Last 12 Month",
+    "custom": "Custom Date",
+    "search": "Search",
+    "cancel": "Cancel"
+  },
+  "HELP_BUBBLE": {
+    "help": "SUGGESTION",
+    "goUp": "UP" 
+  },
+  "UNDER_CONSTRUCTION": {
+    "constructionMessage": "Coming Soon, Under Construction.",
+    "underConstruction": "Coming Soon" 
+  }
+}

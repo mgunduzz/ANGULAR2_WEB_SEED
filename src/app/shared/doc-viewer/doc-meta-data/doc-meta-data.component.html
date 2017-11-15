@@ -1,0 +1,84 @@
+﻿<div class="align-items-start meta-data ">
+  <div class="col row no-gutters" *ngIf="currentStream.mimeType !== 2">
+    <table class="meta-data-table">
+      <tr>
+        <td>{{ 'STREAM_CONTAINER.TITLE' | translate }} :</td>
+        <td *ngIf="document.documentTypeId === 2 ||  document.documentTypeId === 4 ||  document.documentTypeId === 32 ||  document.documentTypeId === 64">{{ document.title }}</td>
+        <td *ngIf="document.documentTypeId == 8 ||  document.documentTypeId == 16"><a [attr.href]="document.link" target="_blank">{{ document.title }} <i class="fa fa-external-link" aria-hidden="true"></i>  </a></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="col row no-gutters" style="display: -webkit-inline-box;">
+
+    <div class="table-1-main">
+      <table class="meta-data-table table-1">
+        <tr *ngIf="document.mediaName">
+          <td>
+            <div class="bold-td" style="max-height: 14px;overflow: hidden;">
+              {{ document.mediaName }}
+            </div>
+          </td>
+        </tr>
+
+
+        <tr *ngIf="document.city && currentStream.mimeType !== 2">
+          <td>{{ document.city }}</td>
+        </tr>
+
+        <tr *ngIf="document.broadcastName">
+          <td>{{ 'STREAM_CONTAINER.BROADCAST_NAME' | translate }} :</td>
+          <td class="bold-td">{{ document.broadcastName }}</td>
+        </tr>
+
+        <tr *ngIf="currentStream.mimeType == 2">
+          <td>{{ document.coverage + ' ' + document.period + ' ' + document.mediaType + ' ' + document.city  }}</td>
+        </tr>
+
+        <tr *ngIf="document.viewDate" class="show-mobile">
+          <td>{{ 'STREAM_CONTAINER.DATE' | translate }} : {{document.viewDate |date:'dd.MM.yyyy'}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="hide-mobile" style="margin-left: 20px">
+      <table class="hide-mobile meta-data-table   table-2">
+        <tr *ngIf="document.viewDate">
+          <td>{{ 'STREAM_CONTAINER.DATE' | translate }} :</td>
+          <td>{{document.viewDate |date:'dd.MM.yyyy'}}</td>
+        </tr>
+
+        <tr *ngIf="document.docContent">
+          <td>{{ 'STREAM_CONTAINER.CONTENT' | translate }} :</td>
+          <td>{{ document.docContent }}</td>
+        </tr>
+
+        <tr *ngIf="document.pageNumber">
+          <td>{{ 'STREAM_CONTAINER.PAGE' | translate }} :</td>
+          <td>{{documentPage}}</td>
+      </table>
+
+    </div>
+
+    <div class="hide-mobile" style="margin-left: 30px">
+      <table class="meta-data-table   table-3">
+        <tr *ngIf="document.sales">
+          <td>{{ 'STREAM_CONTAINER.SALES' | translate }} :</td>
+          <td>{{document.sales}}</td>
+        </tr>
+        <tr *ngIf="document.stxcm">
+          <td>StxCm :</td>
+          <td>{{document.stxcm}}</td>
+        </tr>
+        <tr *ngIf="document.duration">
+          <td>{{ 'STREAM_CONTAINER.DURATION' | translate }} :</td>
+          <td>{{videoDuration}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+</div>

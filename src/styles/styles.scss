@@ -1,0 +1,318 @@
+
+/* this file will be extracted to main dist folder and is imported in index.html */
+/* This file is for setting global styles  */
+@import 'variables';
+@import 'theme';
+@import 'mixins';
+
+@import 'modal.scss';
+@import 'loader.scss';
+@import 'responsive.scss';
+@import 'dropdown.scss';
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+
+.category-lister-main {
+    margin-top: 20px;
+    background-color: #fefefe;
+    overflow: auto;
+    padding: 10px;
+    transition: 0.3s;
+    bottom: 0;
+    box-shadow: 0 2px 3px rgba(0,0,0,.1);
+    max-height: calc(94vh - 150px);
+}
+
+
+.interpress-icon-button {
+    color: black;
+    background-image: none;
+    background-color: transparent;
+}
+
+body {
+    padding-top: 0;
+    background-color: #ebebf3 !important;
+}
+
+.mail-groups .card-header {
+    padding: 6px;
+}
+
+.mail-groups .card-block {
+    padding: 6px;
+}
+
+.mail-groups .card-block ul {
+    margin:0px; 
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.mail-groups .card-block ul li label {
+    width:100%;
+}
+
+.dropdown-interweb {
+    padding: 2.5px 1px !important;
+}
+
+.dropdown-interweb i {
+    padding: 3px 5px !important;
+}
+
+.dropdown-interweb .dropdown-toggle:after {
+    content: none;
+}
+
+.dropdown-interweb-main {
+    top: 30px !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.dropdown-interweb-content {
+    text-align: center !important;
+    padding: 10px !important;
+    background-color: white !important;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+}
+
+.dropdown-interweb-main:before {
+    border-bottom: 7px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.dropdown-interweb-main::after {
+    position: absolute;
+    display: inline-block;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: "";
+    right: 7px;
+    top: -6px;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid white;
+}
+
+
+/*.dropdown-menu:before {
+    right:7px; 
+    top: -7px;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+}
+
+
+.dropdown-menu-left:before {
+    right:auto; 
+    top: -7px;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+}*/
+
+
+.basket-popover .popover {
+    min-width: 265px !important;
+    max-width: 265px !important;
+}
+
+.feedback-popover .popover {
+    min-width: 350px !important;
+    max-width: 350px !important;
+}
+
+.feedback-toolbar-popover .popover {
+    min-width: 350px !important;
+    max-width: 350px !important;
+    top: 45px;
+    left: 732.313px;
+}
+
+.basket-modal .modal-content {
+    width: 400px;
+    box-shadow: grey 0 0 30px;
+}
+
+.basket-modal .modal-dialog {
+    box-shadow: none;
+}
+
+.basket-list-table {
+    width: 100%;
+    border: 1px solid #d3d3d3;
+}
+
+.basket-list-table tr {
+    border-bottom: 1px solid #d3d3d3;
+    cursor: pointer;
+}
+
+.basket-list-table tr.selected {
+    background-color: #3B5998 !important;
+    color: white;
+}
+
+.basket-list-table tr:hover {
+    background-color: #d7ddea;
+}
+
+.basket-list-table td {
+    padding: 7px !important;
+}
+
+.basket-buttons {
+    padding: 8px;
+}
+
+.dropdown-interweb .basket-buttons .btn-sm {
+    padding: 0px;
+}
+
+.dropdown-interweb .basket-buttons img {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .container {
+        width: 1400px !important;
+        max-width: 100%;
+    }
+}
+
+.slim-loading-bar div{
+    /*opacity:1 !important;*/
+}
+
+
+
+
+.login-brand {
+    background-image: url(('/'+$logo-gray-root));
+    width: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.btn-outline-secondary, .custom-select {
+    color: #636c72 !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b5b5b5;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #acacac;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #787878;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.exporter-modal .modal-dialog {
+    top: 40%;
+}
+
+.daterangepicker.opensright:before {
+    right: unset !important;
+}
+
+@media(min-width: 1400px) {
+    .model-agenda .modal-dialog {
+        min-width: 1200px !important;
+    }
+}
+.tooltip{
+    font-size: 0.7rem !important;
+    opacity:0.7!important;
+}
+.margin-20{
+    margin:20px;
+}
+
+.btn-outline-secondary {
+        border-color:rgba(0,0,0,.15) !important;
+}
+
+.btn-outline-secondary:hover{
+        background-color:#e6e6e6 !important;
+}
+ 
+
+.bd-footer {
+    font-size: 85%;
+    text-align: center;
+    bottom: 0;
+    width: 100%; 
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.bd-footer-links {
+    padding-left: 0;
+    margin-bottom: 1rem;
+
+    li {
+        display: inline-block;
+
+        + li {
+            margin-left: 1rem;
+        }
+    }
+}

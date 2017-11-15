@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h6 class="modal-title">{{'AGENDA.agenda' | translate}}</h6>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<div class="  agenda-modal">
+  <div class="row">
+    <div class="col-5 d-flex">
+      <span class="dateText"> {{'AGENDA.startDate' | translate}}</span>
+      <div class="input-group " daterangepicker [options]="pickerOptionsStart" (selected)="selectStartDate($event)">
+        <span class="form-control form-control-sm " name="daterange">
+          {{ startDate | date:'dd-M-y' }}
+
+        </span>
+        <div class="input-group-addon">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5 d-flex">
+
+      <span class="dateText"> {{'AGENDA.endDate' | translate}} </span>
+      <div class="input-group" daterangepicker [options]="pickerOptionsEnd" (selected)="selectEndDate($event)">
+        <span class="form-control form-control-sm " name="daterange">
+          {{ endDate | date:'dd-M-y' }}
+        </span>
+        <div class="input-group-addon">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="text-center col-2">
+      <button class="searchButton btn btn-sm btn-outline-primary" (click)="searchClick()"> {{'AGENDA.search' | translate}}</button>
+    </div>
+
+  </div>
+
+
+
+
+
+  <agenda-list [agendaList]="agendaList"></agenda-list>
+</div>

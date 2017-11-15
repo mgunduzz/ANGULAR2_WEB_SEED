@@ -1,0 +1,51 @@
+<div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 input-page-count pagination-page-view-count" style="display: flex;">
+  <label style="padding-top: 4%; font-size: 13px; margin-right: 4%;">{{'PAGINATION_BAR.onPageViewCount' | translate}}</label>
+  <div class="d-inline-block" ngbDropdown style="max-height: 29px !important; margin-top: 2px;">
+    <button style="border-color: #ddd;padding: 0; height: 29px; width: 50px;" class="btn btn-sm btn-outline-primary pagination-bar-button" id="dropdownBasic" ngbDropdownToggle> {{pageViewCount}}</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownManua2">
+      <button style="margin-left: 5px;    min-width: 35px;    height: 29px;    padding: 0;" class="dropdown-item" *ngFor="let page of pageOnViewData" (click)="changePageViewCount(page)">{{page}}</button>
+    </div>
+  </div>
+
+
+</div>
+<div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-6 input-margin" style="">
+  <div style="display: flex;    max-height: 29px !important;" class="pagination-go">
+    <input class="form-control form-control-sm page-input" style="min-width: 40px" id="goSelectedPage" type="number" [(ngModel)]="selectedPage" min="1" max="{{pageCount}}" (keyup.enter)="changePageClick(selectedPage);" required>
+    <button class="btn btn-sm btn-outline-primary pagination-bar-button" style="margin-left: 5px; min-width: 40px;    padding-bottom: 6px;
+                                                                                                                                                        padding-top: 2px;" [disabled]="selectedPage>0?false:true" (click)="changePageClick(selectedPage)">
+      {{'PAGINATION_BAR.goSelectedPage' | translate}}
+    </button>
+  </div>
+</div>
+
+<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 nextline-margin pagination-pages" >
+
+
+  <ul class="center-pagination justify-content-lg-end justify-content-sm-center pagination pagination-sm" style="margin: 0;">
+    <li class="page-item">
+      <a class="page-link pointer hide-pagination" aria-label="first" (click)="currentPage===1?'':changePageClick(1)">
+        {{'PAGINATION_BAR.first' | translate}}
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link pointer " aria-label="Previous" (click)="currentPage>1?changePageClick(currentPage-1):''">
+        {{'PAGINATION_BAR.previous' | translate}}
+      </a>
+
+    </li>
+    <li class="page-item pointer" [ngClass]="{active:currentPage===page.value+1}" *ngFor="let page of pageArray; let i= index">
+      <a class="page-link pointer" (click)="changePageClick(page.value+1)"> {{page.value+1}} </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link pointer " aria-label="next" (click)="currentPage==pageCount?'':changePageClick(currentPage+1)">
+        {{'PAGINATION_BAR.next' | translate}}
+      </a>
+
+    </li>
+    <li class="page-item">
+      <a class="page-link pointer hide-pagination" (click)="currentPage===pageCount?'':changePageClick(pageCount)">{{'PAGINATION_BAR.last' | translate}}  </a>
+    </li>
+  </ul>
+
+</div>

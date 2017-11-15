@@ -1,0 +1,137 @@
+
+<div class="no-gutters doc-stream-container">
+
+
+
+
+
+  <div class="doc-stream-content" [ngClass]="{ 'full' : !showKeywordList }">
+    <div class="no-gutters container-top">
+      <app-doc-meta-data class="col" [document]="doc"></app-doc-meta-data>
+
+      <div class="hide-mobile toggle-keyword-list" *ngIf="keywords.length > 0 || (currentStream.diaUrl && currentStream.mimeType==2)">
+
+
+        <button class=" btn btn-link toggle-button" (click)="showKeywordList = !showKeywordList" title=" {{ (showKeywordList ? 'STREAM_CONTAINER.HIDE' : 'STREAM_CONTAINER.SHOW') | translate }} " type="button">
+          <span>
+            <i class="fa  {{ (showKeywordList ? 'fa-angle-right ' : 'fa-angle-left ') | translate }}" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="row  media-container no-gutters   doc-viewer-container" *ngIf="refreshed" >
+      <app-videoviewer class="col video-viewer" [stream]="currentStream" *ngIf="currentStream.mimeType==1"></app-videoviewer>
+      <!--<app-imageviewer class="col" [stream]="currentStream" [streamIndex]="currentStreamIndex" [document]="doc" *ngIf="currentStream.mimeType==2"></app-imageviewer>-->
+      <app-textviewer class="col" [document]="doc" [stream]="currentStream" *ngIf="currentStream.mimeType==3 && doc.documentTypeId!=8   && doc.documentTypeId!=16  && doc.documentTypeId!= 2  "></app-textviewer>
+      <div class="col" style="display: flex;flex-direction: column;" *ngIf="(currentStream.mimeType==3 && (doc.documentTypeId==2 || doc.documentTypeId==8 ||  doc.documentTypeId== 16)) || (currentStream.mimeType==2 && doc.documentTypeId==2) ">
+
+        <ngb-tabset  #streamTabSet="ngbTabset" (tabChange)="beforeTabChange($event)" style="flex-grow: 1 !important; display: flex !important; flex-direction: column !important;">
+          
+          
+           
+          <ngb-tab id="tab-iframeviewer"  style="width: 100% !important; height: 100% !important;" class="tabsTitle" title="{{ 'STREAM_CONTAINER.CURRENTINTERNETPAGE' | translate }}" *ngIf="currentStream.mimeType !== 2 && !isTranslate">
+            <ng-template style="width: 100%; height: 100%;" ngbTabContent>
+              <app-iframeviewer class="col" style="width: 100%; height: 100%; padding: 0px;" [document]="doc" [stream]="currentStream"></app-iframeviewer>
+            </ng-template>
+          </ngb-tab>
+
+
+          <ngb-tab id="tab-imageviewer" class="tabsTitle" style="overflow:auto;" title="{{ 'DOC_VIEWER_TOOLBAR.imageView' | translate }}" *ngIf="currentStream.mimeType==2 && doc.documentTypeId==2" >
+            <ng-template ngbTabContent class="deneme" >
+              <app-imageviewer class="col" [stream]="currentStream" [streamIndex]="currentStreamIndex" [document]="doc"></app-imageviewer>
+            </ng-template>
+          </ngb-tab>
+
+
+          <ngb-tab id="tab-textviewer" class="tabsTitle" title="{{ 'DOC_VIEWER_TOOLBAR.textView' | translate }}" *ngIf="!isKunye">
+            <ng-template ngbTabContent>
+              <app-textviewer class="col" [document]="doc" [stream]="currentStream"></app-textviewer>
+            </ng-template>
+          </ngb-tab>
+          
+
+        </ngb-tabset>
+
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="col-lg-2 col-xl-1 col-md-3  col-sm-3 col-2 row  no-gutters" *ngIf="showKeywordList==true && keywords.length > 0 [ngClass]="{'onlyKeyword': !currentStream.diaUrl}">-->
+  <div class="stream-keyword-list no-gutters" *ngIf="showKeywordList==true && (keywords.length > 0 || (currentStream.diaUrl && currentStream.mimeType==2))">
+
+    <ngb-tabset>
+      <ngb-tab class="tabsTitle" title="{{ 'STREAM_CONTAINER.FOUNDED_KEYWORDS' | translate }}" *ngIf="keywords.length > 0">
+        <ng-template ngbTabContent>
+          <div class="keyword-list">
+            <table class="table table-sm   ">
+
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" [(ngModel)]="checkAllKeywords" (ngModelChange)="checkAllKeywordsChanged(checkAllKeywords)">
+                  </th>
+                  <th>
+                    {{ 'STREAM_CONTAINER.FOUNDED_KEYWORDS' | translate }}
+                  </th>
+                  <th>
+                    S
+                  </th>
+                </tr> 
+              </thead>
+              <tbody>
+                <tr *ngFor="let keyword of keywords" [ngStyle]="{ 'background-color' : keyword.color}" [ngClass]="{ 'disable' : ((keyword.pageIndex-1 !== currentStreamIndex) && ((currentStream.mimeType== 2) || (currentStream.mimeType== 1)))    }" (click)="keywordClick(keyword)">
+                  <td>
+                    <input type="checkbox" [(ngModel)]="keyword.isChecked" (click)="$event.stopPropagation()"
+                           (ngModelChange)="keywordCheckedChanged($event);"
+                           [attr.disabled]="((keyword.pageIndex-1 !== currentStreamIndex) && ((currentStream.mimeType== 2) || (currentStream.mimeType== 1))) ? true : null">
+
+                  </td> 
+                  <td>{{ keyword.keyword }}</td>
+                  <td>{{ currentStream.mimeType==1?keyword.duration:keyword.pageIndex}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab class="tabsTitle" title="{{ 'STREAM_CONTAINER.PAGES' | translate }}" *ngIf="currentStream.diaUrl && currentStream.mimeType==2">
+        <ng-template ngbTabContent>
+
+          <ul>
+            <li *ngFor="let docStream of document.streams; let i=index" #f class="pages" (click)="pageClick(i)" [ngClass]="{'active-page': i===currentStreamIndex}">
+              <img [src]="docStream.diaUrl" />
+              <div class="savePageButton" (click)="downloadNewsPage(i);$event.stopPropagation()" ngbTooltip="{{'STREAM_CONTAINER.downloadNewsPage' | translate}}">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+    <!--<div class="col-12   keyword-list">
+      <table class="table table-sm table-bordered  " *ngIf="showKeywordList">
+
+        <thead>
+          <tr>
+            <th>
+              {{ 'STREAM_CONTAINER.FOUNDED_KEYWORDS' | translate }}
+            </th>
+            <th>
+              S
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let keyword of keywords" [ngStyle]="{ 'background-color' : keyword.color}" (click)="keywordClick(keyword)">
+            <td>{{ keyword.keyword }}</td>
+            <td>{{ keyword.pageIndex }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>-->
+
+  </div>
+</div>

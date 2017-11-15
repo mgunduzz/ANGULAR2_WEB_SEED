@@ -1,0 +1,69 @@
+﻿<div class="padding-20 basket" *blockUI="'basket-list-loader'">
+  <div *ngIf="baskets.length > 0">
+    <!-- ADD NEW ITEM TO BASKET LIST -->
+    <div class="row add-new-basket" [hidden]="popoverMode">
+      <div class="label">{{ 'BASKET_LIST.NEW_BASKET' | translate }}</div>
+      <input type="text" [(ngModel)]="newBasketTitle" />
+      <span class="add-button" (click)="addNewBasket()">
+        <i class="fa fa-plus-circle"></i>
+      </span>
+    </div>
+    <hr class="row" [hidden]="popoverMode" />
+    <div class="basket-list">
+      <div [hidden]="baskets.length > 0" style="width: 100%; text-align: center;">{{ 'BASKET_LIST.BASKET_IS_EMPTY' | translate }}</div>
+      <p [hidden]="popoverMode" *ngIf="documents.length>0"><small> {{ 'BASKET_LIST.BASKET_SELECTED_DOCUMENT_TOTAL' | translate }}   {{documents.length}} {{ 'BASKET_LIST.BASKET_SELECTED_DOCUMENT' | translate }}    </small></p>
+      <!-- BASKET LIST -->
+      <table class="basket-list-table" *ngIf="baskets.length > 0">
+        <tr *ngFor="let basket of baskets;let i = index; trackBy : trackByBasketNo" [ngClass]="{ 'selected' : basket.isSelected }" (click)="basketClick(basket);selectedBasketIndex = i">
+          <td class="text-left"><small>{{ basket.sepetAdi }} ({{ basket.haberSayisi }})</small></td>
+          <td class="text-center">
+            <input type="radio" [(ngModel)]="selectedBasketIndex" [value]="i">
+          </td>
+        </tr> 
+      </table>
+    </div>
+    <!-- BASKET BUTTONS -->
+    <div class="basket-buttons" [hidden]="baskets.length === 0">
+
+      <button class="btn btn-sm btn-outline-primary" mwlConfirmationPopover
+              [title]="confirmTitle"
+              [message]="confirmAddtoBasketMessage"
+              [placement]="confirmationPopoverPlacement"
+              (confirm)="addDocsToBasket()"
+              (cancel)="cancelClicked = true">
+        <i ngbTooltip="{{ 'BASKET_LIST.ADD_SELECTED_DOCS_TO_BASKET'  | translate }}" placement="bottom" class="fa fa-plus " aria-hidden="true"></i>
+
+      </button>
+      <button class="btn btn-sm btn-outline-primary" mwlConfirmationPopover
+              [title]="confirmTitle"
+              [message]="confirmClearBasketMessage"
+              [placement]="confirmationPopoverPlacement"
+              (confirm)="emptyBasket()"
+              (cancel)="cancelClicked = true"
+              data-toggle="tooltip">
+
+        <i ngbTooltip="{{ 'BASKET_LIST.EMPTY_BASKET'  | translate }}" placement="bottom" class="fa fa-trash-o" aria-hidden="true"></i>
+
+      </button>
+      <button class="btn btn-sm btn-outline-primary"
+              (click)="goToBasket()"
+              data-toggle="tooltip" data-placement="bottom">
+
+        <i ngbTooltip="{{ 'BASKET_LIST.GO_TO_BASKET'  | translate }}" placement="bottom" class="fa fa-external-link" aria-hidden="true"></i>
+
+      </button>
+      <button class="btn btn-sm btn-outline-primary" [hidden]="selectedBasket.sepetNo == 0"
+              mwlConfirmationPopover
+              [title]="confirmTitle"
+              [message]="deleteBasketMessage"
+              [placement]="confirmationPopoverPlacement"
+              (confirm)="deleteBasket()"
+              (cancel)="cancelClicked = true"
+              data-toggle="tooltip">
+        <i class="fa fa-times" aria-hidden="true" placement="bottom" ngbTooltip="{{ 'BASKET_LIST.DELETE_BASKET'  | translate }}"></i>
+
+      </button>
+
+    </div>
+  </div>
+</div>

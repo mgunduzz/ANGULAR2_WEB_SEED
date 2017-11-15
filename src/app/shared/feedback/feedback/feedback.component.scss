@@ -1,0 +1,37 @@
+.warning-star {
+    color:red;
+    float:left;
+    line-height:29px;
+}
+
+.input-with-warning-star {
+    width:97%;
+    margin-left:9px;
+}
+
+.input-err {
+    margin-left:9px;
+}
+
+.feedback {
+    text-align: center;
+    padding:2px;
+}
+
+.feedback .error-types {
+    text-align: left; 
+    margin-left: 8px;
+}
+
+.feedback .error-types .form-check {
+    text-align: left;
+}
+
+.feedback .error-types .form-check .form-check-label{
+    width: 100%;
+     text-align: left;
+}
+
+.feedback .error-types .form-group {
+    text-align: left
+}

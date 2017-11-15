@@ -1,0 +1,12 @@
+<one-page-header [sharedUrl]="unsecuredAgendaLink" [allowedButtons]="onePageHeaderButtonList"></one-page-header>
+
+
+<div *blockUI="'agenda-iframe-loader'" class="full-height" style="min-height: 1000px" [style.display]="displayType">
+</div>
+
+  <div id="content">
+    <iframe id="iframe" name="iframe" #iframe class="share-interpress-iframe frame iframe" width="100%" height="100%" frameborder="0" [src]="securedAgendaLink"></iframe>
+
+  </div>
+
+

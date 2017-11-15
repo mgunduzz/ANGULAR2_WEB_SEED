@@ -1,0 +1,35 @@
+a {
+}
+
+.dropdown-inline {
+}
+
+.dropdown-toggle .caret {
+    margin-left: 4px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.drop-down-multiselect .dropdown-item :hover, .drop-down-multiselect .dropdown-item :focus {
+    text-decoration: none;
+}
+
+.drop-down-multiselect .dropdown-item span {
+    font-size: 11px;
+}
+
+.drop-down-multiselect .dropdown-menu {
+    min-width: 13rem;
+    display: block;
+}
+/*.dropdown-menu{
+     
+ }*/
+
+.btn span {
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    width: 75%;
+    text-align: left;
+}

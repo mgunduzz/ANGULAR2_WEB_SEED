@@ -1,0 +1,494 @@
+﻿<ng2-slim-loading-bar [show]="true"></ng2-slim-loading-bar>
+<div class="row" style="margin: 0;">
+  <div class="doc-viewer-toolbar" [ngClass]="{ 'public-mode' : publicView }">
+
+    <div class="public-logo hide-mobile">
+      <img src="../../../../assets/img/interpresslogo.png" alt="Medya Takibi - Interpress Medya Takip Merkezi" *ngIf="publicView" style="height: 42px;">
+    </div>
+
+    <div style="flex-grow: 1;">
+      <div class="text-center toolbox" [ngClass]="{ 'vertical-center' : publicView }">
+        <!-- Previous Document -->
+        <button class="btn   btn-outline-secondary btn-sm" (click)="goPreviousDocument()" [attr.disabled]="( isGoPreviousDocumentActive )  ? null : true">
+          <i class="fa fa-arrow-left " aria-hidden="true"></i>
+          <span class="hide-doc-navigation-text">
+            {{ 'DOC_VIEWER_TOOLBAR.PREVIOUS_DOCUMENT' | translate }}
+          </span>
+        </button>
+
+
+        <!--<button class="btn   btn-outline-secondary btn-sm" (click)="goPreviousDocument()" [attr.disabled]="( isGoPreviousDocumentActive )  ? null : true" *ngIf="showMultipleDocument && !isDocumentListSimpleList">
+          <i class="fa fa-arrow-left " aria-hidden="true"></i>
+          <span class="hide-doc-navigation-text">
+            {{ 'DOC_VIEWER_TOOLBAR.PREVIOUS_DOCUMENT' | translate }}
+          </span>
+        </button>-->
+        <!--
+
+
+        All ZOOMN BUTTONS IN ONE DROPDOWN
+
+
+        -->
+
+        <span class="hide-mobile zoom-buttons-dropdown-btn btn btn-outline-secondary btn-sm dropdown-interweb" *ngIf="currentDocument.documentTypeId===2 || currentStream.mimeType == 3" ngbDropdown="ngbDropdown" [autoClose]="false" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SEND_MAIL'  | translate }}">
+          <i class="fa fa-search " aria-hidden="true" ngbDropdownToggle></i>
+          <div class="zoom-buttons-dropdown dropdown-menu dropdown-toolbar-main dropdown-left    " ngbDropdownMenu aria-labelledby="dropdownManual">
+            <div class="dropdown-interweb-content">
+
+              <div>
+                <!--Zoom IN -->
+                <span id="process-zoom-in" class="btn   btn-outline-secondary btn-sm" (click)="runToolBoxProcess('zoomIn')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ZOOM_IN'  | translate }}">
+                  <i class="fa fa-plus-circle " aria-hidden="true"></i>
+                </span>
+
+                <!--Zoom OUT -->
+                <span class="btn   btn-outline-secondary btn-sm" (click)="runToolBoxProcess('zoomOut')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ZOOM_OUT'  | translate }}">
+                  <i class="fa fa-minus-circle " aria-hidden="true"></i>
+                </span>
+
+                <!-- Full -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('full')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.EXPAND'  | translate }}">
+                  <i class="fa fa-arrows-alt " aria-hidden="true"></i>
+                </span>
+              </div>
+              <div>
+                <!-- 1:1 -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('readMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ORIGINAL_SIZE'  | translate }}">
+                  <i class="fa " aria-hidden="true">1:1</i>
+                </span>
+
+                <!-- Horizantal Full -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('widthMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.HORIZANTAL_EXPAND'  | translate }}">
+                  <i class="fa fa-arrows-h " aria-hidden="true"></i>
+                </span>
+
+
+                <!-- Vertical Full -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('heightMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.VERTICAL_EXPAND'  | translate }}">
+                  <i class="fa fa-arrows-v " aria-hidden="true"></i>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </span>
+
+
+
+        <!--
+
+        ZOOM BUTTONS
+
+        -->
+        <!--Zoom IN -->
+        <span id="process-zoom-in" class="hide-mobile zoom-button  btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2 || currentStream.mimeType == 3" (click)="runToolBoxProcess('zoomIn')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ZOOM_IN'  | translate }}">
+          <i class="fa fa-plus-circle " aria-hidden="true"></i>
+        </span>
+
+        <!--Zoom OUT -->
+        <span class="hide-mobile zoom-button btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2 || currentStream.mimeType == 3" (click)="runToolBoxProcess('zoomOut')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ZOOM_OUT'  | translate }}">
+          <i class="fa fa-minus-circle " aria-hidden="true"></i>
+        </span>
+
+        <!-- Full -->
+        <span class="hide-mobile zoom-button btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('full')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.EXPAND'  | translate }}">
+          <i class="fa fa-arrows-alt " aria-hidden="true"></i>
+        </span>
+
+        <!-- 1:1 -->
+        <span class="hide-mobile zoom-button btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('readMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ORIGINAL_SIZE'  | translate }}">
+          <i class="fa " aria-hidden="true">1:1</i>
+        </span>
+
+        <!-- Horizantal Full -->
+        <span class="hide-mobile zoom-button btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('widthMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.HORIZANTAL_EXPAND'  | translate }}">
+          <i class="fa fa-arrows-h " aria-hidden="true"></i>
+        </span>
+
+
+        <!-- Vertical Full -->
+        <span class="hide-mobile zoom-button btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('heightMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.VERTICAL_EXPAND'  | translate }}">
+          <i class="fa fa-arrows-v " aria-hidden="true"></i>
+        </span>
+
+
+
+
+
+        <!-- haberin metni -->
+        <!--<span class="hide-mobile btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="getNewsText()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.textView'  | translate }}">
+          <i class="fa fa-align-left" aria-hidden="true"></i>
+        </span>-->
+        <!--
+
+        DOCUMENT NAVIGATION
+
+        -->
+        <!-- Go First Doc Page -->
+        <button class=" btn btn-outline-secondary btn-sm" (click)="goFirstMedia()" *ngIf="currentStream.mimeType == 2" [attr.disabled]="streamIndex == 0 ? true : null" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.FIRST_STREAM'  | translate }}">
+          <i class="fa fa-step-backward " aria-hidden="true"></i>
+        </button>
+
+        <!-- Previous Doc Page -->
+        <button class=" btn btn-outline-secondary btn-sm" style="margin-right: 5px;" (click)="goPreviousMedia()" *ngIf="currentStream.mimeType == 2" [attr.disabled]="streamIndex == 0 ? true : null" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.PREVIOUS_STREAM'  | translate }}">
+          <i class="fa fa-chevron-circle-left " aria-hidden="true"></i>
+        </button>
+
+        <span style="padding: 0 10px; margin-right: 5px;" *ngIf="currentStream.mimeType == 2">
+          {{ streamIndex + 1 }} / {{ this.currentDocument.streams.length }}
+        </span>
+
+        <!-- Next Doc Page -->
+        <button class=" btn btn-outline-secondary btn-sm" (click)="goNextMedia()" *ngIf="currentStream.mimeType == 2" [attr.disabled]="streamIndex == currentDocument.streams.length -1 ? true : null" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.NEXT_STREAM'  | translate }}">
+          <i class="fa fa-chevron-circle-right " aria-hidden="true"></i>
+        </button>
+
+        <!-- Go Last Doc Page -->
+        <button class="padding  btn  btn-outline-secondary btn-sm" (click)="goLastMedia()" *ngIf="currentStream.mimeType == 2" [attr.disabled]="streamIndex == currentDocument.streams.length -1 ? true : null" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.LAST_STREAM'  | translate }}">
+          <i class="fa fa-step-forward " aria-hidden="true"></i>
+        </button>
+
+
+        <!--
+
+        DOCUMENT NAVIGATION
+
+        -->
+        <!-- Feedback -->
+        <span *ngIf="!publicView" [hidden]="toolbarNotAllowedButtons.feedback" (click)="openFeedback()" class="hide-mobile btn   btn-outline-secondary btn-sm dropdown-interweb margin-left-20" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.feedback'  | translate }}">
+          <i class="fa fa-comments" aria-hidden="true"></i>
+        </span>
+
+
+        <!-- Download PDF -->
+        <span [hidden]="toolbarNotAllowedButtons.download" class="hide-mobile btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="downloadDocumentPdf()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.DOWNLOAD_AS_PDF'  | translate }}">
+          <i class="fa fa-file-pdf-o " aria-hidden="true"></i>
+        </span>
+
+
+        <!-- Download Mizanpaj -->
+        <span [hidden]="toolbarNotAllowedButtons.download" class="hide-mobile btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="downloadDocumentMizanpaj()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.DOWNLOAD_AS_MIZANPAJ'  | translate }}">
+          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+        </span>
+
+
+        <!-- Basket -->
+        <span *ngIf="!publicView" [autoClose]="false" class="hide-mobile btn   btn-outline-secondary btn-sm dropdown-interweb" ngbDropdown #basketDropDown="ngbDropdown" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ADD_TO_BASKET'  | translate }}">
+          <i class="fa fa-shopping-basket " aria-hidden="true" #basketDropDownToggle ngbDropdownToggle (click)="basketDropDownClick()"></i>
+          <div class="dropdown-menu dropdown-toolbar-main dropdown-left" ngbDropdownMenu aria-labelledby="dropdownManual">
+            <div class="dropdown-interweb-content">
+              <doc-basket-list id="DOC-BASKET-LIST" *ngIf="currentDocument" [documents]="[currentDocument]" [popoverMode]="true"></doc-basket-list>
+            </div>
+          </div>
+        </span>
+
+
+        <!-- Show Dia -->
+        <!--<span class="hide-mobile btn   btn-outline-secondary btn-sm dropdown-interweb" ngbDropdownToggle ngbDropdown #diaDropDown="ngbDropdown" [autoClose]="true" *ngIf="currentStream.mimeType == 2" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SHOW_DIA'  | translate }}">
+          <i class="fa fa-eye " aria-hidden="true" (click)="diaDropDownClick()"></i>
+          <div class="dropdown-menu dropdown-toolbar-main dropdown-left    "  ngbDropdownMenu aria-labelledby="dropdownManual">
+            <div class="dropdown-interweb-content" *ngIf="currentStream.mimeType == 2">
+              <img style="max-width: 150px; max-height: 300px" [src]="currentStream.diaUrl">
+            </div>
+          </div>
+        </span>-->
+        <!-- Send Mail -->
+        <span *ngIf="!publicView" [hidden]="toolbarNotAllowedButtons.mail" class="hide-mobile btn   btn-outline-secondary btn-sm dropdown-interweb" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SEND_MAIL'  | translate }}">
+          <i class="fa fa-envelope " aria-hidden="true" (click)="openMailSenderModal()"></i>
+        </span>
+
+
+        <!--
+
+        ALL DOWNLOADS IN ONE DROPDOWN
+
+        -->
+
+        <span class="hide-mobile download-buttons-dropdown-btn btn btn-outline-secondary btn-sm dropdown-interweb" ngbDropdown="ngbDropdown" [autoClose]="false" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SEND_MAIL'  | translate }}">
+          <i class="fa fa-download " aria-hidden="true" ngbDropdownToggle></i>
+          <div class="download-buttons-dropdown dropdown-menu dropdown-toolbar-main dropdown-left    " ngbDropdownMenu aria-labelledby="dropdownManual">
+            <div class="dropdown-interweb-content">
+
+              <div>
+
+                <!-- �mage -->
+                <span class="btn btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('downloadImage')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.DOWNLOAD_AS_IMG'  | translate }}">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                </span>
+                <!-- print -->
+                <span [hidden]="toolbarNotAllowedButtons.download" class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="downloadDocumentPdfAdvenced()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.print'  | translate }}">
+                  <i class="fa fa-print " aria-hidden="true"></i>
+                </span>
+
+                <!-- Haberi indir -->
+                <span *ngIf="!publicView && (currentDocument.documentTypeId===2)" style="padding: 0" [autoClose]="false" [hidden]="toolbarNotAllowedButtons.downloadNew" class="download-button btn   btn-outline-secondary btn-sm dropdown-interweb margin-left-20" ngbDropdown #downloadJpegDropDown="ngbDropdown" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.downloadNew'  | translate }}">
+                  <i class="fa fa-floppy-o" aria-hidden="true" ngbDropdownToggle #downloadJpegDropDownToggle style="padding: 5.4px;width: 26px;"></i>
+                  <div class="dropdown-menu dropdown-toolbar-main dropdown-left    " ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <div class="dropdown-interweb-content" style="text-align: left !important; height: 130px">
+                      <div id="saveASJpeg">
+                        <form action="">
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="1" [checked]="jpegDownloadModel.size==1" />A4 Boyutu<br>
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="3" [checked]="jpegDownloadModel.size==3" />Orjinal Boyutu<br>
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="5" [checked]="jpegDownloadModel.size==5" />Okunaklı Boyutu<br>
+                          <input type="checkbox" name="downloadImage" value="Kelime" [checked]="jpegDownloadModel.isMarked" (change)="jpegDownloadModel.isMarked = !jpegDownloadModel.isMarked" /> Bulunan Kelimeleri İşaretle<br>
+                          <input type="checkbox" name="downloadImage" value="Künye" [checked]="jpegDownloadModel.isAddKunye" (change)="jpegDownloadModel.isAddKunye = !jpegDownloadModel.isAddKunye" /> Künye Bilgisi Yaz
+                        </form>
+                        <div class="buttons">
+                          <button class="yazdir btn  btn-sm btn-primary" (click)="downloadJpeg();downloadJpegDropDown.close();$event.stopPropagation();">Resmi Kaydet</button>
+                          <button class="cancel btn  btn-sm btn-primary" (click)="downloadJpegDropDown.close();$event.stopPropagation(); ">İptal</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+
+              </div>
+
+            </div>
+          </div>
+        </span>
+
+
+
+        <!--
+
+        DOWNLOAD BUTTONS
+
+        -->
+        <!-- �mage -->
+        <span class="download-button btn btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('downloadImage')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.DOWNLOAD_AS_IMG'  | translate }}">
+          <i class="fa fa-download" aria-hidden="true"></i>
+        </span>
+        <!-- print -->
+        <span [hidden]="toolbarNotAllowedButtons.download" class="download-button btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="downloadDocumentPdfAdvenced()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.print'  | translate }}">
+          <i class="fa fa-print " aria-hidden="true"></i>
+        </span>
+
+        <!-- Haberi indir -->
+        <span *ngIf="!publicView && (currentDocument.documentTypeId===2)" style="padding: 0" [autoClose]="false" [hidden]="toolbarNotAllowedButtons.downloadNew" class="download-button btn   btn-outline-secondary btn-sm dropdown-interweb margin-left-20" ngbDropdown #downloadJpegDropDown="ngbDropdown" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.downloadNew'  | translate }}">
+          <i class="fa fa-floppy-o" aria-hidden="true" ngbDropdownToggle #downloadJpegDropDownToggle style="padding: 5.4px;width: 26px;"></i>
+          <div class="dropdown-menu dropdown-toolbar-main dropdown-left    " ngbDropdownMenu aria-labelledby="dropdownManual">
+            <div class="dropdown-interweb-content" style="text-align: left !important; ">
+              <div id="saveASJpeg">
+                <form action="">
+                  <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="1" [checked]="jpegDownloadModel.size==1" />A4 Boyutu<br>
+                  <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="3" [checked]="jpegDownloadModel.size==3" />Orjinal Boyutu<br>
+                  <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="5" [checked]="jpegDownloadModel.size==5" />Okunaklı Boyutu<br>
+                  <input type="checkbox" name="downloadImage" value="Kelime" [checked]="jpegDownloadModel.isMarked" (change)="jpegDownloadModel.isMarked = !jpegDownloadModel.isMarked" /> Bulunan Kelimeleri İşaretle<br>
+                  <input type="checkbox" name="downloadImage" value="Künye" [checked]="jpegDownloadModel.isAddKunye" (change)="jpegDownloadModel.isAddKunye = !jpegDownloadModel.isAddKunye" /> Künye Bilgisi Yaz
+                </form>
+                <div class="buttons">
+                  <button class="yazdir btn  btn-sm btn-primary" (click)="downloadJpeg();downloadJpegDropDown.close();$event.stopPropagation();">Resmi Kaydet</button>
+                  <button class="cancel btn  btn-sm btn-primary" (click)="downloadJpegDropDown.close();$event.stopPropagation(); ">İptal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+
+        <!--Share-->
+        <span *ngIf="!publicView" #shareDropDown="ngbDropdown" ngbDropdown class="hide-mobile btn  btn-outline-secondary btn-sm  " data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.share'  | translate }}">
+          <i class="fa fa-share-alt icons" aria-hidden="true" ngbDropdownToggle #shareDropDownToggle></i>
+          <div class="nav-item dropdown-menu  dropdown-left      po-abs" style="width: 150px;" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+            <social-share id="SOCIAL-SHARE" [url]="myUrl" [title]="currentDocument.title" [image]="currentStream.url" [tags]="'interpress'"></social-share>
+          </div>
+        </span>
+
+
+
+        <!-- Next Document -->
+        <button class="btn  btn-outline-secondary btn-sm" (click)="goNextDocument()" [attr.disabled]="( isGoNextDocumentActive ) ? null : true">
+          <span class="hide-doc-navigation-text">
+            {{ 'DOC_VIEWER_TOOLBAR.NEXT_DOCUMENT' | translate }}
+          </span>
+          <i class="fa fa-arrow-right " aria-hidden="true"></i>
+        </button>
+
+
+
+        <span class="hamburger-dropdown-btn btn btn-outline-secondary btn-sm dropdown-interweb" style="float: right;" (click)="showMobileExtraRow = !showMobileExtraRow" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SEND_MAIL'  | translate }}">
+          <i class="fa fa-bars " aria-hidden="true" style="font-size: 17px;"></i>
+        </span>
+
+
+      </div>
+
+
+
+      <div class="text-center toolbox mobile-extra-row " [ngClass]="{ 'vertical-center' : publicView }" *ngIf="showMobileExtraRow">
+
+        <span class="zoom-buttons-dropdown-btn btn btn-outline-secondary btn-sm dropdown-interweb" #zoomButtonDropDown="ngbDropdown" ngbDropdown="ngbDropdown" [autoClose]="false" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SEND_MAIL'  | translate }}">
+          <i class="fa fa-search " aria-hidden="true" ngbDropdownToggle #zoomButtonDropDownToggle></i>
+          <div id="zoomButtons" class="zoom-buttons-dropdown dropdown-menu dropdown-left dropdown-extra-row-main" ngbDropdownMenu aria-labelledby="dropdownManual">
+            <div class="dropdown-interweb-content">
+
+              <div>
+                <!--Zoom IN -->
+                <span id="process-zoom-in" class="btn   btn-outline-secondary btn-sm" (click)="runToolBoxProcess('zoomIn')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ZOOM_IN'  | translate }}">
+                  <i class="fa fa-plus-circle " aria-hidden="true"></i>
+                </span>
+
+                <!--Zoom OUT -->
+                <span class="btn   btn-outline-secondary btn-sm" (click)="runToolBoxProcess('zoomOut')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ZOOM_OUT'  | translate }}">
+                  <i class="fa fa-minus-circle " aria-hidden="true"></i>
+                </span>
+
+                <!-- Full -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('full')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.EXPAND'  | translate }}">
+                  <i class="fa fa-arrows-alt " aria-hidden="true"></i>
+                </span>
+              </div>
+              <div>
+                <!-- 1:1 -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('readMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ORIGINAL_SIZE'  | translate }}">
+                  <i class="fa " aria-hidden="true">1:1</i>
+                </span>
+
+                <!-- Horizantal Full -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('widthMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.HORIZANTAL_EXPAND'  | translate }}">
+                  <i class="fa fa-arrows-h " aria-hidden="true"></i>
+                </span>
+
+
+                <!-- Vertical Full -->
+                <span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('heightMode')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.VERTICAL_EXPAND'  | translate }}">
+                  }
+                  v
+                  <i class="fa fa-arrows-v " aria-hidden="true"></i>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </span>
+
+        <!-- haberin metni -->
+        <!--<span class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="getNewsText()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.textView'  | translate }}">
+          <i class="fa fa-align-left" aria-hidden="true"></i>
+        </span>-->
+        <!--feedBack-->
+        <span *ngIf="!publicView" [hidden]="toolbarNotAllowedButtons.feedback" (click)="openFeedback()" class="hide-mobile btn   btn-outline-secondary btn-sm dropdown-interweb margin-left-20" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.feedback'  | translate }}">
+          <i class="fa fa-comments" aria-hidden="true"></i>
+        </span>
+
+        <!-- Basket -->
+        <span *ngIf="!publicView" [autoClose]="false" class=" btn btn-outline-secondary btn-sm dropdown-interweb" ngbDropdown #basketDropDown="ngbDropdown" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.ADD_TO_BASKET'  | translate }}">
+          <i class="fa fa-shopping-basket " aria-hidden="true" #basketDropDownToggle ngbDropdownToggle (click)="basketDropDownClick()"></i>
+          <div class="dropdown-menu dropdown-toolbar-main dropdown-extra-row-main" ngbDropdownMenu aria-labelledby="dropdownManual" style="top: 81px;">
+            <div class="dropdown-interweb-content">
+              <doc-basket-list id="DOC-BASKET-LIST" *ngIf="currentDocument" [documents]="[currentDocument]" [popoverMode]="true"></doc-basket-list>
+            </div>
+          </div>
+        </span>
+
+        <!-- Send Mail -->
+        <span *ngIf="!publicView" [hidden]="toolbarNotAllowedButtons.mail" class="padding  btn   btn-outline-secondary btn-sm dropdown-interweb" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SEND_MAIL'  | translate }}">
+          <i class="fa fa-envelope " aria-hidden="true" (click)="openMailSenderModal()"></i>
+        </span>
+
+        <span class="download-buttons-dropdown-btn btn btn-outline-secondary btn-sm dropdown-interweb" ngbDropdown="ngbDropdown" [autoClose]="false" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.SEND_MAIL'  | translate }}">
+          <i class="fa fa-download " aria-hidden="true" ngbDropdownToggle></i>
+          <div class="download-buttons-dropdown dropdown-menu dropdown-extra-row-main dropdown-left    " ngbDropdownMenu aria-labelledby="dropdownManual">
+            <div class="dropdown-interweb-content">
+
+              <div>
+
+                <!-- Download PDF -->
+                <span [hidden]="toolbarNotAllowedButtons.download" class=" btn btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="downloadDocumentPdf()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.DOWNLOAD_AS_PDF'  | translate }}">
+                  <i class="fa fa-file-pdf-o " aria-hidden="true"></i>
+                </span>
+
+
+                <!-- Download Mizanpaj -->
+                <span [hidden]="toolbarNotAllowedButtons.download" class=" btn btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="downloadDocumentMizanpaj()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.DOWNLOAD_AS_MIZANPAJ'  | translate }}">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </span>
+
+                <!-- �mage -->
+                <span class="btn btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="runToolBoxProcess('downloadImage')" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.DOWNLOAD_AS_IMG'  | translate }}">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                </span>
+
+
+              </div>
+
+
+              <div>
+
+
+                <!-- print -->
+                <span [hidden]="toolbarNotAllowedButtons.download" class="btn   btn-outline-secondary btn-sm" *ngIf="currentDocument.documentTypeId===2" (click)="downloadDocumentPdfAdvenced()" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.print'  | translate }}">
+                  <i class="fa fa-print " aria-hidden="true"></i>
+                </span>
+
+                <!-- Haberi indir -->
+                <span *ngIf="!publicView && (currentDocument.documentTypeId===2)" style="padding: 0" [autoClose]="false" [hidden]="toolbarNotAllowedButtons.downloadNew" class="download-button btn   btn-outline-secondary btn-sm dropdown-interweb margin-left-20" ngbDropdown #downloadJpegDropDown="ngbDropdown" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.downloadNew'  | translate }}">
+                  <i class="fa fa-floppy-o" aria-hidden="true" ngbDropdownToggle #downloadJpegDropDownToggle style="padding: 5.4px;width: 26px;"></i>
+                  <div class="dropdown-menu dropdown-extra-row-main dropdown-left    " ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <div class="dropdown-interweb-content" style="text-align: left !important; height: 130px">
+                      <div id="saveASJpeg">
+                        <form action="">
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="1" [checked]="jpegDownloadModel.size==1" />A4 Boyutu<br>
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="3" [checked]="jpegDownloadModel.size==3" />Orjinal Boyutu<br>
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="5" [checked]="jpegDownloadModel.size==5" />Okunaklı Boyutu<br>
+                          <input type="checkbox" name="downloadImage" value="Kelime" [checked]="jpegDownloadModel.isMarked" (change)="jpegDownloadModel.isMarked = !jpegDownloadModel.isMarked" /> Bulunan Kelimeleri İşaretle<br>
+                          <input type="checkbox" name="downloadImage" value="Künye" [checked]="jpegDownloadModel.isAddKunye" (change)="jpegDownloadModel.isAddKunye = !jpegDownloadModel.isAddKunye" /> Künye Bilgisi Yaz
+                        </form>
+                        <div class="buttons">
+                          <button class="yazdir btn  btn-sm btn-primary" (click)="downloadJpeg();downloadJpegDropDown.close();$event.stopPropagation();">Resmi Kaydet</button>
+                          <button class="cancel btn  btn-sm btn-primary" (click)="downloadJpegDropDown.close();$event.stopPropagation(); ">İptal</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+
+                <!-- Haberi indir -->
+                <span *ngIf="!publicView && (currentDocument.documentTypeId===2)" style="padding: 0" [autoClose]="false" [hidden]="toolbarNotAllowedButtons.downloadNew" class="btn   btn-outline-secondary btn-sm dropdown-interweb margin-left-20" ngbDropdown #downloadJpegDropDown="ngbDropdown" data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.downloadNew'  | translate }}">
+                  <i class="fa fa-floppy-o" aria-hidden="true" ngbDropdownToggle #downloadJpegDropDownToggle style="padding: 5.4px;width: 26px;"></i>
+                  <div class="dropdown-menu dropdown-toolbar-main dropdown-left    " ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <div class="dropdown-interweb-content" style="text-align: left !important; ">
+                      <div id="saveASJpeg">
+                        <form action="">
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="1" [checked]="jpegDownloadModel.size==1" />A4 Boyutu<br>
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="3" [checked]="jpegDownloadModel.size==3" />Orjinal Boyutu<br>
+                          <input name="options" type="radio" [(ngModel)]="jpegDownloadModel.size" [value]="5" [checked]="jpegDownloadModel.size==5" />Okunaklı Boyutu<br>
+                          <input type="checkbox" name="downloadImage" value="Kelime" [checked]="jpegDownloadModel.isMarked" (change)="jpegDownloadModel.isMarked = !jpegDownloadModel.isMarked" /> Bulunan Kelimeleri İşaretle<br>
+                          <input type="checkbox" name="downloadImage" value="Künye" [checked]="jpegDownloadModel.isAddKunye" (change)="jpegDownloadModel.isAddKunye = !jpegDownloadModel.isAddKunye" /> Künye Bilgisi Yaz
+                        </form>
+                        <div class="buttons">
+                          <button class="yazdir btn  btn-sm btn-primary" (click)="downloadJpeg();downloadJpegDropDown.close();$event.stopPropagation();">Resmi Kaydet</button>
+                          <button class="cancel btn  btn-sm btn-primary" (click)="downloadJpegDropDown.close();$event.stopPropagation(); ">İptal</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </span>
+
+        <!--Share-->
+        <span *ngIf="!publicView" #shareDropDown="ngbDropdown" ngbDropdown class="btn  btn-outline-secondary btn-sm  " data-toggle="tooltip" data-placement="bottom" title="{{ 'DOC_VIEWER_TOOLBAR.share'  | translate }}">
+          <i class="fa fa-share-alt icons" aria-hidden="true" ngbDropdownToggle #shareDropDownToggle></i>
+          <div class="nav-item dropdown-menu  dropdown-left   dropdown-extra-row-main   po-abs" style="width: 150px;" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+            <social-share id="SOCIAL-SHARE" [url]="myUrl" [title]="currentDocument.title" [image]="currentStream.url" [tags]="'interpress'"></social-share>
+          </div>
+        </span>
+
+
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <button type="button" class="close" aria-label="Close" (click)="closeThisTab();">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

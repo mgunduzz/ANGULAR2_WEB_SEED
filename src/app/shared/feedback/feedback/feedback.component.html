@@ -1,0 +1,52 @@
+﻿<div class="feedback">
+
+  <form [formGroup]="feedbackForm" (ngSubmit)="sendFeedBack()" *blockUI="'feedback-loader'">
+    <div class="form-group"  >
+      <div>
+        <span class="warning-star">*</span>
+        <input class="form-control form-control-sm input-with-warning-star" type="text" id="sendername" name="sendername" formControlName="sendername" [(ngModel)]="feedBackViewModel.senderName" placeholder="{{ 'FEEDBACK.sendername' | translate }}" required="" autofocus="">
+      </div>
+    </div>
+
+    <span class="warning-star">*</span>
+
+    <div class="error-types">
+      <span>Hata Tipi :</span>
+
+      <div class="form-check" *ngFor="let errorType of feedBackViewModel.errorTypes">
+        <label class="form-check-label">
+          <input type="checkbox" [(ngModel)]="errorType.isSelected" (ngModelChange)="errorTypeChecked(errorType)" [ngModelOptions]="{standalone: true}" class="form-check-input" name="errorType">
+          <small>    {{ errorType.name }}</small>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <span class="warning-star">*</span>
+        <textarea class="form-control form-control-sm input-with-warning-star" formControlName="note" id="note" rows="3" [(ngModel)]="feedBackViewModel.note" name="note" placeholder="{{ 'FEEDBACK.note' | translate }}" required="" autofocus=""></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <span class="warning-star">*</span>
+        <input type="email"
+               id="email"
+               name="email"
+               formControlName="email"
+               [(ngModel)]="feedBackViewModel.email"
+               class="form-control form-control-sm input-with-warning-star"
+               placeholder="{{ 'FEEDBACK.email' | translate }}"
+               required=""
+               autofocus="">
+      </div>
+
+      <div *ngIf="feedbackForm.get('email').dirty && feedbackForm.get('email').hasError('email')" class="alert alert-warning input-err" role="alert">
+        {{ 'FEEDBACK.email_pattern_error' | translate }}
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!feedbackForm.valid || !atLeastOneErrorTypeSelected">Gönder</button>
+  </form>
+</div>

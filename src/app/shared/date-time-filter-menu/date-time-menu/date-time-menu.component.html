@@ -1,0 +1,23 @@
+﻿<div class="main-date-filter">
+  <div class="ranges">
+    <ul>
+      <li *ngFor="let range of dateRange; let i=index" [ngClass]="{'active' :i==selectedIndex}" (click)="setDate(i);">{{'DATE_TIME_PICKER.'+range | translate}}</li>
+
+    </ul>
+    <div class="range_inputs">
+      <button class="applyBtn btn btn-sm btn-success" (click)="searchSelectedDates(true)" type="button">{{'DATE_TIME_PICKER.search' | translate}}</button>
+      <button class="cancelBtn btn btn-sm btn-default" (click)="clearAndSetDefaultSelectedDates()" type="button">{{'DATE_TIME_PICKER.cancel' | translate}}</button>
+    </div>
+  </div>
+
+  <div>
+    <ngbd-datepicker-i18n class="datepicker-i18n time-picker" [startDatePicker]="startDatePicker" [endDatePicker]="endDatePicker"  ></ngbd-datepicker-i18n>
+  </div>
+  <div class="range_inputs-for-mobile">
+    <button class="applyBtn btn btn-sm btn-success col-5" (click)="searchSelectedDates(true)" type="button">{{'DATE_TIME_PICKER.search' | translate}}</button>
+    <button class="cancelBtn btn btn-sm btn-default col-5" (click)="clearAndSetDefaultSelectedDates()" type="button">{{'DATE_TIME_PICKER.cancel' | translate}}</button>
+  </div>
+</div>
+
+
+

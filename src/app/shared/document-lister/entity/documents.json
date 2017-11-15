@@ -1,0 +1,115 @@
+{
+    "totalCount": 50,
+    "currentPage": 1,
+    "onPageViewCount": 10,
+    "showItems": [
+        "docTypeIdName",
+        "publishDate",
+        "mediaName",
+        "title",
+        "tiraj",
+        "pageNo"
+
+    ],
+    "documents": [{
+            "id": 1,
+            "viewDate": 21022017,
+            "publishDate": 20022017,
+            "title": "Haber Başlık 1",
+            "docTypeId": "2",
+            "mediaName": "AKŞAM",
+            "tiraj": 3213,
+            "content": "haber1 content"
+        }, 
+        {
+            "id": 2,
+            "viewDate": 20022017, 
+            "publishDate": 19022017,
+            "title": "Haber Başlık 2",
+            "docTypeId": "2",
+            "tiraj": 3213,
+            "mediaName": "Milliyet",
+            "content": "haber2 content"
+        },
+        {
+            "id": 3,
+            "viewDate": 19022017,
+            "publishDate": 18022017,
+            "title": "Haber Başlık 3",
+            "docTypeId": "2",
+            "tiraj": 3213,
+            "mediaName": "Hürriyet",
+            "content": "haber3 content"
+        },
+        {
+            "id": 4,
+            "viewDate": 18022017,
+            "publishDate": 17022017,
+            "title": "Haber Başlık 4",
+            "docTypeId": "2",
+            "mediaName": "Vatan",
+            "tiraj": 3213,
+            "content": "haber4 content"
+        },
+        {
+            "id": 5,
+            "viewDate": 17022017,
+            "publishDate": 16022017,
+            "title": "Haber Başlık 5",
+            "tiraj": 3213,
+            "docTypeId": "2",
+            "mediaName": "Posta",
+            "content": "haber5 content"
+        },
+        {
+            "id": 6,
+            "viewDate": 16022017,
+            "publishDate": 15022017,
+            "title": "Haber Başlık 6",
+            "tiraj": 3213,
+            "docTypeId": "2",
+            "mediaName": "Vakit",
+            "content": "haber6 content"
+        },
+        {
+            "id": 7,
+            "viewDate": 15022017,
+            "publishDate": 14022017,
+            "title": "Haber Başlık 7",
+            "tiraj": 3213,
+            "docTypeId": "2",
+            "mediaName": "Cumhuriyet",
+            "content": "haber7 content"
+        },
+        {
+            "id": 8,
+            "viewDate": 14022017,
+            "publishDate": 13022017,
+            "title": "Haber Başlık 8",
+            "docTypeId": "2",
+            "tiraj": 3213,
+            "mediaName": "Bursa Yerel",
+            "content": "haber8 content"
+        },
+        {
+            "id": 9,
+            "viewDate": 13022017,
+            "publishDate": 12022017,
+            "title": "Haber Başlık 9",
+            "docTypeId": "2",
+            "tiraj": 3213,
+            "mediaName": "Kayseri Yerel",
+            "content": "haber9 content"
+        },
+        {
+            "id": 10,
+            "viewDate": 12022017,
+            "publishDate": 11022017,
+            "title": "Haber Başlık 10",
+            "docTypeId": "2",
+            "tiraj": 3213,
+            "mediaName": "Antalya'nın Sesi",
+            "content": "haber10 content"
+        }
+    ]
+}

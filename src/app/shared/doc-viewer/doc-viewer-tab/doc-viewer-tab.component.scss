@@ -1,0 +1,47 @@
+.doc-viewer-toolbar {
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 5px;
+    transition: .3s;
+    background-color: #fefefe;
+    /*border-bottom: solid 1px #dddddd;*/
+}
+
+body {
+    padding: 0px !important;
+}
+
+
+.keyword-list-hide-button {
+    top: 87px !important;
+    left: -22px !important;
+}
+
+.tab-content {
+    background-color: white;
+}
+
+.doc-viewer-content.public-view {
+    height: calc(100vh - 82px);
+}
+
+.doc-viewer-content {
+    height: calc(100vh - 68px);
+    padding: 0px 21px;
+    margin-top: 20px;
+}
+
+@media(max-width: 768px) {
+    .doc-viewer-content {
+        padding: 0px 7px;
+        margin-top: 10px;
+    }
+}
+
+@media(max-width: 425px) {
+    .doc-viewer-content {
+        padding: 0px 4px;
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,18 @@
+<div class="agendaHeader">
+  <div class="container">
+    <div class="row">
+      <a class="brand col-2" title="interweb" href="/">&nbsp;</a>
+      <div class="agendaHeader-icons col-10">
+        <i class="fa fa-times-circle icons" aria-hidden="true" (click)="closeClick()"></i>
+        <i class="fa fa-file-word-o icons" aria-hidden="true" (click)="exportAgendaClick()" *ngIf="allowedButtons.exportAgenda"></i>
+        <div ngbDropdown [autoClose]="true">
+          <i class="fa fa-share-alt icons" aria-hidden="true" ngbDropdownToggle *ngIf="allowedButtons.share"></i>
+          <div class="nav-item dropdown-menu  dropdown-left   dropdown-menu-right-align   po-abs" ngbDropdownMenu style="width: 150px;" aria-labelledby="dropdownMenuButton">
+            <social-share [url]="agendaUrl"></social-share>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

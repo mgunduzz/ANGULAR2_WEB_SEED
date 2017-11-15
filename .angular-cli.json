@@ -1,0 +1,79 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "interweb"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "",
+      "styles": [
+
+        "../node_modules/videogular2/fonts/videogular.css",
+
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/ng2-slim-loading-bar/style.css",
+        "../node_modules/ng2-toasty/style-bootstrap.css",
+        "../node_modules/dragula/dist/dragula.css",
+        "styles/styles.scss"
+
+
+
+      ],
+      "addons": [
+        "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)" 
+      ],
+  "scripts": [
+    "../node_modules/jquery/dist/jquery.min.js",
+    "../node_modules/moment/min/moment.min.js",
+    "../src/assets/googoose/jquery.googoose.js",
+    "../src/assets/googoose/FileSaver.js",
+    "../src/assets/googoose/jquery.wordexport.js",
+    "../src/assets/chart/chart.min.js",
+    "../src/assets/unsupported/unsupported.js",
+
+    "../src/assets/kinetic/jquery.kinetic.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "component": { }
+  }
+}

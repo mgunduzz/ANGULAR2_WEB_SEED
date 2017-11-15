@@ -1,0 +1,10 @@
+.video-player {
+    width: 100%;
+    max-width: 1200px;
+}
+
+@media screen and (min-width: 890px) {
+    .video-player {
+        width: 650px;
+    }
+}

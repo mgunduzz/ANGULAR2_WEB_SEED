@@ -1,0 +1,178 @@
+﻿<div class="docList" style="width: 100%; padding-top: 50px;" *ngIf="!isShowDocumentList">
+    <document-info-graphic-list></document-info-graphic-list>
+</div>
+
+<div class="docList" style="width: 100%" *ngIf="isShowDocumentList">
+
+
+    <table class="table table-hover" style="width: 100%">
+        <thead>
+            <tr>
+
+                <td *ngIf="isBasket">
+                    <i class="fa fa-arrows"></i>
+                </td>
+                <th style="width: 10px" *ngIf="!isSimpleList">
+                    <div>
+                        <input type="checkbox" [(ngModel)]="isSelected" (change)="selectAllDocumentsChange(isSelected)">
+                    </div>
+                </th>
+                <th>
+                    No
+                </th>
+                <th *ngIf="isBasket" class="hide" style="width: 66px; cursor: pointer;" (click)="sortByClick('DocumentTypeId')">
+                    {{'DOCUMENT_LISTER.documentTypeId' | translate }}
+                    <i class="fa fa-sort" [ngClass]="{'fa-sort-desc':sorting.field=='DocumentTypeId' && sorting.asc==true?true:false,'fa-sort-asc':sorting.field=='DocumentTypeId' && sorting.asc==false?true:false }" aria-hidden="true"></i>
+                </th>
+                <th *ngIf="!isBasket" class="hide" style="cursor: pointer" (click)="sortByClick('DocumentTypeId')">
+                    {{'DOCUMENT_LISTER.documentTypeId' | translate }}
+                    <i class="fa fa-sort" [ngClass]="{'fa-sort-desc':sorting.field=='DocumentTypeId' && sorting.asc==true?true:false,'fa-sort-asc':sorting.field=='DocumentTypeId' && sorting.asc==false?true:false }" aria-hidden="true"></i>
+                </th>
+                <th class="hide m-cell" style="cursor: pointer" (click)="sortByClick('PublishDate')">
+                    {{'DOCUMENT_LISTER.publishDate' | translate}}
+                    <i class="fa fa-sort" [ngClass]="{'fa-sort-desc':sorting.field=='PublishDate' && sorting.asc==true?true:false,'fa-sort-asc':sorting.field=='PublishDate' && sorting.asc==false?true:false }" aria-hidden="true"></i>
+                </th>
+                <th style="cursor: pointer" (click)="sortByClick('MediaName')">
+                    {{'DOCUMENT_LISTER.mediaName' | translate}}
+                    <i class="fa fa-sort" [ngClass]="{'fa-sort-desc':sorting.field=='MediaName' && sorting.asc==true?true:false,'fa-sort-asc':sorting.field=='MediaName' && sorting.asc==false?true:false }" aria-hidden="true"></i>
+                </th>
+
+                <th style="cursor: pointer" (click)="sortByClick('Title')">
+                    {{'DOCUMENT_LISTER.title' | translate}}
+                    <i class="fa fa-sort" [ngClass]="{'fa-sort-desc':sorting.field=='Title' && sorting.asc==true?true:false,'fa-sort-asc':sorting.field=='Title' && sorting.asc==false?true:false }" aria-hidden="true"></i>
+                </th>
+
+              <th class="hide-press-extra" style="cursor: pointer;" (click)="sortByClick('Sales')" *ngIf="selectedSingleDocType === 'press'">
+                {{'DOCUMENT_LISTER.sales' | translate}}
+                <i class="fa fa-sort" [ngClass]="{'fa-sort-desc':sorting.field=='Sales' && sorting.asc==true?true:false,'fa-sort-asc':sorting.field=='Sales' && sorting.asc==false?true:false }" aria-hidden="true"></i>
+              </th>
+
+              <th class="hide-press-extra" style="cursor: pointer" (click)="sortByClick('PageNumber')" *ngIf="selectedSingleDocType === 'press'">
+                {{'DOCUMENT_LISTER.pageNumber' | translate}}
+                <i class="fa fa-sort" [ngClass]="{'fa-sort-desc':sorting.field=='pageNumber' && sorting.asc==true?true:false,'fa-sort-asc':sorting.field=='pageNumber' && sorting.asc==false?true:false }" aria-hidden="true"></i>
+              </th>
+            </tr>
+        </thead>
+        <tbody [dragula]='listName' [dragulaModel]='(documentData.documents | async)'>
+            <tr *ngFor="let doc of documentData.documents | async ; let i = index; trackBy: trackById " (mouseenter)="docMouseEnter(doc)" (mouseleave)="docMouseLeave(doc)" [style.background-color]="doc.checked?'#fff7dd':''" (change)="documentSelectionChange(doc,doc.checked)">
+
+                <!--<tr *ngFor="let doc of documentData.documents | async ; let i = index; trackBy: trackById "  (mouseenter)="docMouseEnter(doc)" [style.background-color]="doc.checked?'#fff7dd':''" (change)="documentSelectionChange(doc,doc.checked)">-->
+                <td *ngIf="doc.value" colspan="8" class="category">
+                    <div>{{doc.value}}</div>
+                </td>
+
+
+                <td *ngIf="(isBasket) && (doc.rowIndex!=null)" class="pointer">
+                    <i class="fa fa-arrows"></i>
+                </td>
+                <td style="text-align: center" [style.display]="!(doc.rowIndex===null)?'':'none'" *ngIf="!isSimpleList">
+                    <div>
+                        <input type="checkbox" [(ngModel)]="doc.checked">
+                    </div>
+                </td>
+                <td class="basket-sort" *ngIf="(isBasket) && (doc.rowIndex!=null)" [style.display]="(doc.rowIndex>0 || doc.rowIndex===null)?'':'none'" style="width: 1%;">
+
+                    <input type="number" style="width: 35px; text-align: center;" min="1" max="{{documentData.documents.value.length}}"
+                           [(ngModel)]="doc.rowIndex" (focusout)="documentIndexChange(doc.id,doc.rowIndex,i+1)">
+                </td>
+                <td *ngIf="!(isBasket)" [style.display]="(doc.rowIndex>0 || doc.rowIndex===null)?'':'none'" class="row-index">
+
+                    <div>{{doc.rowIndex}}</div>
+                </td>
+
+
+                <td *ngIf="!(doc.rowIndex==null)" class="hide" style="cursor: default; padding-left: 10px;max-width: 60px;min-width: 60px;" [style.display]="(doc.rowIndex>0 || doc.rowIndex===null)?'':'none'">
+                    <div class="label" [ngClass]="'DOCUMENT_TYPE_ICON.'+doc.documentTypeId |  translate">
+                        {{('DOCUMENT_TYPE.'+doc.documentTypeId | translate).substr(0,1)}}
+                    </div>
+                </td>
+                <td *ngIf="!(doc.rowIndex==null)" class="hide date" style="cursor: default;" [style.display]="(doc.rowIndex>0 || doc.rowIndex===null)?'':'none'">
+                    {{doc.publishDate |customDatePipe:'DD/MM/YYYY hh:mm'}}
+                </td>
+                <td class="m-name" *ngIf="!(doc.rowIndex==null)" [style.display]="(doc.rowIndex>0 || doc.rowIndex===null)?'':'none'" [ngbTooltip]="doc.mediaName.length>30? doc.mediaName : ''" container="body" (click)="openDocInNewTabKunye(doc);$event.stopPropagation()" style="max-width:200px !important">
+                    <div class="large-screen-cell pointer"> {{doc.mediaName}}</div>
+
+                </td>
+
+                <td *ngIf="!(doc.rowIndex==null)" class="title-row" [style.display]="(doc.rowIndex>0 || doc.rowIndex===null)?'':'none'">
+                    <!--<i class="fa fa-external-link fa-1-4x fa-color-gray pointer" aria-hidden="true" (click)="onDocumetViewClick(doc,i)"  style="float: left; margin-right: 5px;"></i>-->
+
+                    <span class="title-content" (click)="openDocInNewTab(doc);$event.stopPropagation()" style="display: inline-block;">
+                        <span style="cursor: pointer;" [style.color]="doc.isReaded?'#c01b0a':''">{{doc.title}}</span>
+                    </span>
+
+
+                    <div class="doc-output  row  pointer" style="float: right;  margin-top: 15px;margin-right: -8px;" *ngIf="!isSimpleList && doc.onDocumentHover">
+
+
+                        <div ngbDropdown #basketDropDown="ngbDropdown" [autoClose]="false" class="mobile-basket dropdown-interweb padding-left-0" style="cursor: pointer; margin-right: 10px;" aria-hidden="true">
+                            <i #basketDropDownToggle class="fa fa-cart-plus  fa-1-5x fa-color-gray" ngbDropdownToggle (click)="basketDropDownClick(doc,i);" style="padding: 0 !important;"></i>
+                            <div class="dropdown-menu dropdown-interweb-main dropdown-left   dropdown-menu-right-align " ngbDropdownMenu aria-labelledby="dropdownManual">
+                                <div class="dropdown-interweb-content" *ngIf="selectedDocforBasket.id === doc.id && showBasketList">
+                                    <doc-basket-list [documents]="[selectedDocforBasket]" [popoverMode]="true"></doc-basket-list>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="dropdown-interweb padding-left-0 mobile-basket" style="cursor: pointer;margin-right: 10px;" aria-hidden="true">
+                            <i class="fa fa-comments  fa-1-5x fa-color-gray" (click)="feedbackDropDownClick(doc,i);" style="padding: 0 !important;"></i>
+
+
+                        </div>
+
+                        <div class="dropdown-interweb padding-left-0" ngbDropdown #myDrop="ngbDropdown" [autoClose]="true" style="cursor: pointer;margin-right: 10px;">
+                            <i id="dropdownManual" ngbDropdownToggle (click)="documentFeatureClick()" class="fa fa-ellipsis-v fa-1-5x fa-color-gray" style="cursor: pointer;padding: 1px 10px 0 3px !important; width:5px !important" aria-hidden="true"></i>
+                            <div class="dropdown-menu dropdown-interweb-main dropdown-left threeDot-modal  dropdown-menu-right-align" ngbDropdownMenu aria-labelledby="dropdownManual">
+                                <div class="dropdown-interweb-content-export">
+                                    <ul>
+                                        <li class="mobile-feedback" (click)="feedbackDropDownClick(doc,i);">
+                                            {{'FEEDBACK.feedback' | translate}}
+                                        </li>
+                                        <li *ngIf="doc.documentTypeId===2" (click)="exportFileClick('mizanpaj',doc)">
+                                            {{'OUR_SERVICES.mizanpaj' | translate}}
+                                        </li>
+                                        <li *ngIf="doc.documentTypeId===2" (click)="exportFileClick('translate',doc)">
+                                            {{'OUR_SERVICES.translate' | translate}}
+                                        </li>
+                                        <li *ngIf="doc.documentTypeId===2 || doc.documentTypeId===64 || doc.documentTypeId===4" (click)="exportFileClick('downloadFile',doc)">
+                                            {{'OUR_SERVICES.downloadFile' | translate}}
+                                        </li>
+                                        <li *ngIf="doc.documentTypeId===8" (click)="exportFileClick('snapshot',doc)">
+                                            {{'OUR_SERVICES.snapshot' | translate}}
+                                        </li>
+                                        <li *ngFor="let item of ourServicesItems" (click)="exportFileClick(item,doc)">
+                                            {{'OUR_SERVICES.'+item | translate}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </td>
+              
+
+              <td *ngIf="selectedSingleDocType === 'press'" style="max-width: 70px;min-width: 70px;" class="hide-press-extra">
+                <div class="large-screen-cell pointer"> {{doc.sales}}</div>
+              </td>
+
+              <td *ngIf="selectedSingleDocType === 'press'" style="max-width: 70px;min-width: 70px;" class="hide-press-extra" >
+                <div class="large-screen-cell pointer"> {{doc.pageNumber}}</div>
+              </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+
+        <div style="font-size: 11px;" *ngIf="(documentData.totalCount.value.totalCount > documentData.pageViewCount ) && (isBasket!==true)">
+            <pagination-bar class="row align-items-center pagination-bar"
+                            [_currentPage]="currentPage"
+                            [pageViewCount]="documentData.pageViewCount"
+                            [totalCount]="documentData.totalCount">
+            </pagination-bar>
+        </div>
+    </div>
+</div>

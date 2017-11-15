@@ -1,0 +1,41 @@
+﻿
+
+<div class="container">
+  <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
+
+
+
+    <div class="row">
+      <a class="login-brand  col " title="interweb" href="#">&nbsp;</a>
+
+    </div>
+    <div class="row" >
+      &nbsp;
+    </div>
+    <h5 class="form-signin-heading"> {{ 'LOGIN.title' | translate }}</h5>
+    <div class="column">
+      <input type="email" id="username" name="username" formControlName="username" class="form-control col form-control-sm" placeholder="{{ 'LOGIN.username' | translate }}" required="" autofocus="">
+      <div *ngIf="loginForm.get('username').touched && loginForm.get('username').hasError('required')" style="margin-top: 8px;" class=" col alert alert-warning" role="alert">
+        {{ 'LOGIN.usernameRequired' | translate }}
+      </div>
+    </div>
+    <div class="column">
+
+      <input type="password" id="inputPassword" formControlName="password" class=" col form-control form-control-sm" placeholder="{{ 'LOGIN.password' | translate }}" required="">
+      <div *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')" class="alert alert-warning" role="alert">
+        {{ 'LOGIN.passwordRequired' | translate }}
+      </div>
+    </div>
+    <div class="column">
+
+      <button class=" col btn btn-lg btn-primary btn-sm btn-block" [disabled]="!loginForm.valid" type="submit">{{ 'LOGIN.signIn' | translate }}</button>
+    </div>
+    <br />
+    <div class="column">
+      <select  (ngModelChange)="changeLang($event)"  [(ngModel)]="selectedLang"  formControlName="lang"   class="col custom-select  form-control-sm">
+        <option *ngFor="let c of langs" [ngValue]="c">{{c.name}}</option>
+ 
+      </select>
+    </div>
+  </form>
+</div>

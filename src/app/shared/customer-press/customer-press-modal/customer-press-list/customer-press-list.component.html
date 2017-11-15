@@ -1,0 +1,21 @@
+<div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th class="table-no-field"></th>
+      <th class="table-no-field">No</th>
+      <th class="table-date-field">{{'AGENDA.date' | translate}}</th>
+      <th class="table-title-field">{{'AGENDA.title' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr *ngFor="let doc of selectedDocuments ; let i=index" [style.background-color]="doc.checked?'#fff7dd':''">
+      <th class="table-no-field"><input type="checkbox" (change)="checkboxChange(doc)" #f /></th>
+      <td class="table-no-field">{{i+1}}</td>
+      <td class="table-date-field">{{doc.publishDate |date:'dd/MM/yyyy'}}</td>
+      <td class="table-title-field">{{doc.title}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

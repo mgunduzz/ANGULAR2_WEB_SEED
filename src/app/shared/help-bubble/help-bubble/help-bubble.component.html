@@ -1,0 +1,52 @@
+﻿<div class="bubble" [ngClass]="{'bubble-shadow' : isClicked}">
+  <button *ngIf="!isClicked" class="btn btn-primary toggle-button" type="button" (click)="(isSuggestionMode ? isClicked=!isClicked : goUp())">
+    <i class="fa " aria-hidden="true" [ngClass]="{ 'fa-commenting' : isSuggestionMode  , 'fa-angle-up' : !isSuggestionMode  }"></i>
+    {{(isSuggestionMode ? ('HELP_BUBBLE.help' | translate) : ('HELP_BUBBLE.goUp' | translate))  }}
+  </button>
+
+  <div *ngIf="isClicked" class="bubble-inside">
+    <div class="modal-header">
+      <h6 class="modal-title">{{'HELP_BUBBLE.help' | translate}}</h6>
+      <button type="button" class="close" aria-label="Close" (click)="isClicked=!isClicked">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="bubble-content">
+      <form [formGroup]="helpBubbleForm" (ngSubmit)="sendFeedBack()">
+        <div class="form-group">
+          <div class="form-content">
+            <span class="warning-star">*</span>
+            <input class="form-control form-control-sm input-with-warning-star" type="text" id="sendername" name="sendername" formControlName="sendername" [(ngModel)]="helpBubbleViewModel.senderName" placeholder="{{ 'FEEDBACK.sendername' | translate }}" required="" autofocus="">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-content">
+            <span class="warning-star">*</span>
+            <input type="email"
+                   id="email"
+                   name="email"
+                   formControlName="email"
+                   [(ngModel)]="helpBubbleViewModel.email"
+                   class="form-control form-control-sm input-with-warning-star"
+                   placeholder="{{ 'FEEDBACK.email' | translate }}"
+                   required=""
+                   autofocus="">
+          </div>
+          <div *ngIf="helpBubbleForm.get('email').dirty && helpBubbleForm.get('email').hasError('email')" class="alert alert-warning input-err" role="alert">
+            {{ 'FEEDBACK.email_pattern_error' | translate }}
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-content">
+            <span class="warning-star">*</span>
+            <textarea class="form-control form-control-sm input-with-warning-star" formControlName="note" id="note" rows="3" [(ngModel)]="helpBubbleViewModel.note" name="note" placeholder="{{ 'FEEDBACK.note' | translate }}" required="" autofocus=""></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary col-12" [disabled]="!helpBubbleForm.valid">{{ 'FEEDBACK.send' | translate }}</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+

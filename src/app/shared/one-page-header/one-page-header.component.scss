@@ -1,0 +1,79 @@
+@import '../../../styles/conf.scss';
+
+
+
+.share-interpress-iframe {
+    height: 94%;
+    width: 100%;
+    position: absolute;
+
+}
+
+.icons {
+    color: white;
+    padding: 10px; 
+    font-size: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.agendaHeader i:hover {
+    color: #a5a5a5;
+}
+
+.agendaHeader { 
+    background-color: #3c4355 !important;
+    height: 40px;
+}
+     
+     
+.agendaHeader-icons {
+    padding-right: 2%;
+}
+
+.brand {
+    background-image: url(('/'+$logo-root));
+    height: 40px;    
+    background-size: contain;
+    background-repeat: no-repeat;
+     padding-top: .25rem;
+    
+    font-size: 1.25rem;
+}
+
+.fa-share-alt::after {
+    content: unset !important;
+}
+
+.dropdown-menu {
+  top: 30px !important;
+    right: 10% !important;
+    padding: unset !important;
+    margin: unset !important;
+}
+
+.dropdown-menu:before {
+    left: 140px !important;
+}
+
+.sb-button {
+    width: 100%;
+}
+
+.sb-button button {
+    padding: 0px !important;
+    padding-bottom: 3px !important;
+    padding-top: 3px !important;
+}
+
+@media print {
+    .container {
+        display: none;
+    }
+
+    body, html, #wrapper {
+        width: 100% !important;
+    }
+}
+
+

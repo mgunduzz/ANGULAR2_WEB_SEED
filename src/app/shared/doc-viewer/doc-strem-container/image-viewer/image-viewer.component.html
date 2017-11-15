@@ -1,0 +1,10 @@
+<div style="height: 100%;    margin-top: -24px;">
+  <div id="wrapper" class="wrapper   " style="overflow: hidden; position: relative; text-align: center; margin-left: 0px;  ">
+    <div class="inner">
+      <div class="noselect" id="imageMain" style="position: absolute;" pinch-zoom>
+        <div [id]="'region-' + region.index" class="noselect" style="z-index: 9999; position: absolute; opacity: 0.3; filter: alpha(opacity=40);" [ngStyle]="{'left': region.x+'%' , 'top': region.y+'%' , 'width': region.w+'%', 'height': region.h+'%', 'background-color': region.color }" *ngFor="let region of  highLights">&nbsp;</div>
+        <img id="viewimage" src="{{ stream.url }}" (load)="imageLoaded()" alt="wembley stadium" />
+      </div>
+    </div>
+  </div>
+</div> 

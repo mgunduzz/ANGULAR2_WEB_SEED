@@ -1,0 +1,62 @@
+﻿<div class="dropdown col    drop-down-multiselect   select-menu  select-menu-modal-right  " style="padding: 0px;" [ngClass]="settings.containerClasses" [class.open]="isVisible">
+  <button type="button" class="btn-sm col btn-outline-secondary" [ngClass]="settings.buttonClasses" (click)="toggleDropdown()" [disabled]="disabled">
+    <span style="float: left; ">{{ title }}</span>
+    <i style="float: right; padding: 2px;" class="fa fa-caret-down" aria-hidden="true"></i>
+
+  </button>
+  <ul *ngIf="isVisible" class="dropdown-menu col" [class.dropdown-menu-right-align]="settings.pullRight" [class.dropdown-menu-right]="settings.pullRight">
+    <li class="dropdown-item search" *ngIf="settings.enableSearch">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon" id="sizing-addon3"><i class="fa fa-search"></i></span>
+        <input type="text" class="form-control" placeholder="{{'MISSION_FILTER.Search...' | translate }}" aria-describedby="sizing-addon3" [(ngModel)]="searchFilterText" (ngModelChange)="searchTextChanged()"
+               [ngModelOptions]="{standalone: true}" myAutoFocus>
+        <span class="input-group-btn" *ngIf="searchFilterText.length > 0">
+          <button class="btn btn-default btn-outline-secondary" type="button" (click)="clearSearch($event)"><i class="fa fa-times"></i></button>
+        </span>
+      </div>
+    </li>
+    <li class="dropdown-divider divider" *ngIf="settings.enableSearch && settings.showCheckAll && options.length>0" style="margin: 0; margin-top: 5px;" ></li>
+    <li class="dropdown-item check-control check-control-check" *ngIf="settings.showCheckAll && options.length>0" style="font-size: 12px;display: inline-table !important">
+      <a href="javascript:;" role="menuitem" tabindex="-1" (click)="checkAll()" style="float: left">
+        <span style="width: 16px; font-size:12px" [ngClass]="{'glyphicon glyphicon-ok': settings.checkedStyle !== 'fontawesome','fa fa-check': settings.checkedStyle === 'fontawesome'}"></span>
+        {{ 'MISSION_FILTER.selectAll' | translate }}
+      </a>
+      <a href="javascript:;" role="menuitem" tabindex="-1" (click)="uncheckAll()" *ngIf="numSelected>0" style="float: right">
+        <span style="width: 16px; font-size:12px" [ngClass]="{'glyphicon glyphicon-remove': settings.checkedStyle !== 'fontawesome','fa fa-times': settings.checkedStyle === 'fontawesome'}"></span>
+          {{ 'MISSION_FILTER.clear' | translate }}
+
+      </a>
+    </li>
+    <li *ngIf="settings.showCheckAll || settings.showUncheckAll" class="dropdown-divider divider"></li>
+
+
+    <!--<li class="dropdown-item" style="cursor: pointer;" (click)="selectAllChecked($event)" *ngIf="options.length > 0">
+      <a role="menuitem" tabindex="-1">
+        <input type="checkbox" [(ngModel)]="isSelectAll" >
+        <span style="font-weight: normal;">
+          {{'MISSION_FILTER.selectAll' | translate }}
+        </span>
+      </a>
+    </li>
+    
+    <li  class="dropdown-divider divider" style="margin: 0;" *ngIf="options.length > 0"></li>-->
+
+
+    <div [style.max-height]="settings.maxHeight" style="display: block; height: auto; overflow-y: auto;">
+      <li class="dropdown-item" [ngStyle]="getItemStyle(option)" *ngFor="let option of options | searchFilter:searchFilterText"
+          (click)="!option.isLabel && setSelected($event, option)" [class.dropdown-header]="option.isLabel">
+        <ng-template [ngIf]="option.isLabel">{{ option.value }}</ng-template>
+        <a *ngIf="!option.isLabel" href="javascript:;" role="menuitem" tabindex="-1" [style.padding-left]="this.parents.length>0&&this.parents.indexOf(option.key)<0&&'30px'">
+          <input *ngIf="settings.checkedStyle === 'checkboxes'" type="checkbox" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event, option)" />
+          <span *ngIf="settings.checkedStyle === 'glyphicon'" style="width: 16px;" class="glyphicon" [class.glyphicon-ok]="isSelected(option)"></span>
+          <span *ngIf="settings.checkedStyle === 'fontawesome'" style="width: 16px;display: inline-block;">
+            <i *ngIf="isSelected(option)" class="fa fa-check" aria-hidden="true"></i>
+          </span>
+          <span [ngClass]="settings.itemClasses" [style.font-weight]="this.parents.indexOf(option.key)>=0?'bold':'normal'">
+            {{ option.value }}
+          </span>
+        </a>
+      </li>
+    </div>
+  </ul>
+</div>

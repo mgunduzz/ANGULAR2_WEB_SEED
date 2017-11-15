@@ -1,0 +1,48 @@
+.shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fefefe;
+}
+
+.icon-set {
+    padding: 10px !important;
+    cursor: pointer;
+}
+
+.exportItems {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+}
+
+.selectedDocs {
+    white-space: nowrap;
+    font-size: 11px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(236, 238, 239);
+}
+
+.selectedDocs a {
+    float: right;
+    color: #178ce2;
+    cursor: pointer;
+    -moz-transform: translateY(-100%);
+    flex-wrap:nowrap;
+}
+
+.selectedDocs a:hover {
+    float: right;
+    color: #0f5080;
+}
+ 
+
+@media screen and (max-width: 767px) 
+{
+
+    .exportItems{
+            flex-wrap:wrap !important;
+
+    }
+
+
+}

@@ -1,0 +1,190 @@
+﻿@import 'conf';
+
+.modal-backdrop {
+    background-color: white !important;
+}
+
+.modal.show .modal-dialog {
+    box-shadow: grey 0 0 30px;
+}
+
+.modal-content {
+    border-radius: 0px !important;
+}
+
+
+.warning-message {
+    padding-top: 15%;
+}
+
+.full-width-modal {
+    .modal-dialog {
+        max-width: 99.5% !important;
+        height: -o-calc(100% - 65px) !important; /* opera */
+        height: calc(100% - 65px) !important; /* opera */
+        height: -webkit-calc(100% - 65px) !important; /* google, safari */
+        height: -moz-calc(100% - 65px) !important; /* firefox */
+    }
+
+    .modal-content {
+        overflow: auto;
+        height: 100%;
+    }
+}
+
+.mail-sender-modal {
+    .modal-dialog {
+        max-width: 50%;
+    }
+
+    .modal-content {
+        overflow: auto;
+        height: 100%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .mail-sender-modal {
+        .modal-dialog {
+            max-width: 96%;
+        }
+    }
+}
+
+
+.mail-sender-modal {
+
+
+    .modal-dialog {
+        height: 50px; 
+    }
+
+    .modal-content {
+        height: 505px;
+
+        .modal-body {
+            padding: 0 15px;
+            height: -o-calc(500px - 55px) !important; /* opera */
+            height: calc(500px - 55px) !important; /* opera */
+            height: -webkit-calc(500px - 55px) !important; /* google, safari */
+            height: -moz-calc(500px - 55px) !important; /* firefox */
+        }
+
+        .tab-pane .scrolling-ul {
+            height: 240px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+}
+
+
+.customer-press-modal {
+    .modal-dialog {
+    }
+
+    .modal-content {
+        max-height: 780px;
+        min-height: 200px;
+
+
+
+        .modal-body {
+            padding: 0 15px;
+            height: -o-calc(768px - 55px) !important; /* opera */
+            height: calc(768px - 55px) !important; /* opera */
+            height: -webkit-calc(768px - 55px) !important; /* google, safari */
+            height: -moz-calc(768px - 55px) !important; /* firefox */
+        }
+    }
+}
+
+
+.columnists-press-modal {
+    .modal-dialog {
+    }
+
+    .modal-content {
+        width: 950px;
+
+        .modal-body {
+            padding: 0 15px;
+            height: -o-calc(768px - 55px) !important; /* opera */
+            height: calc(768px - 55px) !important; /* opera */
+            height: -webkit-calc(768px - 55px) !important; /* google, safari */
+            height: -moz-calc(768px - 55px) !important; /* firefox */
+        }
+    }
+}
+
+
+@media (min-width: 992px) {
+    .columnists-press-modal {
+        .modal-lg {
+            max-width: 950px;
+        }
+    }
+}
+
+
+@media screen and (min-width: $resM) {
+    .mail-sender-modal {
+
+
+        .modal-dialog {
+            max-width: 80% !important;
+        }
+    }
+}
+
+
+@media screen and (min-width: $resL) {
+    .mail-sender-modal {
+
+
+        .modal-dialog {
+        }
+    }
+}
+
+
+@media screen and (min-width: $resXL) {
+    .mail-sender-modal {
+
+
+        .modal-dialog {
+            max-width: 60% !important;
+        }
+    }
+}
+
+
+document-viewer-modal {
+    height: 100% !important;
+}
+
+document-viewer-modal {
+
+    .modal-body {
+        height: -o-calc(100% - 62px) !important; /* opera */
+        height: calc(100% - 62px) !important; /* opera */
+        height: -webkit-calc(100% - 62px) !important; /* google, safari */
+        height: -moz-calc(100% - 62px) !important; /* firefox */
+        padding-bottom: 0px !important;
+    }
+}
+
+app-doc-strem-container > div {
+    height: -o-calc(100% - 20px) !important; /* opera */
+    height: calc(100% - 20px) !important; /* opera */
+    height: -webkit-calc(100% - 20px) !important; /* google, safari */
+    height: -moz-calc(100% - 20px) !important; /* firefox */
+    padding-bottom: 0px;
+}
+
+.doc-viewer-container {
+    height: -o-calc(100% ) !important; /* opera */
+    height: calc(100% ) !important; /* opera */
+    height: -webkit-calc(100% ) !important; /* google, safari */
+    height: -moz-calc(100% ) !important; /* firefox */
+}

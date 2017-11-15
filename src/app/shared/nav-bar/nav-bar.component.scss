@@ -1,0 +1,130 @@
+@import '../../../styles/conf';
+
+nav {
+}
+
+.nav-bar {
+    box-shadow: 0 1px 0 rgba(12,13,14,0.15);
+    transition: box-shadow cubic-bezier(.165, .84, .44, 1) .25s;
+    background-color: $nav-bar-background-color !important;
+}
+
+.nav-bar {
+
+    li:hover {
+        /*background-color: $navbar-on-hover;*/
+    }
+
+    .nav-link {
+        cursor: pointer;
+        font-size: 0.95rem;
+    }
+
+    .nav-item {
+        padding: 0px;
+    }
+
+    .navbar-nav {
+        li.active {
+            /*border-bottom: 3px solid #ec971f;*/
+        }
+    }
+}
+
+.navbar {
+    padding: 0px 10px;
+}
+
+
+.navbar-brand {
+    background-image: url(('/'+$logo-root));
+    width: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.page-top {
+    background-color: $sidebar;
+    position: fixed;
+    z-index: 904;
+    box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
+    height: 66px;
+    width: 100%;
+    min-width: $resMin;
+    padding: 0 32px 0 40px;
+}
+
+.blur {
+    .page-top.scrolled {
+        background-color: rgba(black, 0.85);
+    }
+}
+
+
+.navbar-brand:hover {
+    /*background-color: $navbar-on-hover;*/
+}
+
+
+
+
+@media screen and (max-width: $resS) {
+    .search {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: $resXS) {
+    .page-top {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: $resXXS) {
+}
+
+.po-abs {
+    position: absolute !important;
+    right: 0% !important;
+    left: unset;
+}
+
+@media (max-width:465px) {  
+
+    .our-services {
+        display: none;
+    }
+
+    .fa-user {
+        display: unset !important;
+        margin-left: 10px;
+    }
+
+    .cat-right {
+        float: right;
+    }
+}
+
+.fa-user {
+    display: none;
+}
+
+
+@media (max-width:767px) {
+   .left-cats {
+        display: none !important;
+    }
+
+    .collapse {
+        display: block !important;
+    }
+    .navbar-collapse {
+        flex-basis: 35% !important;
+    }
+    .services-mobile {
+        display: block !important;
+    }
+
+}

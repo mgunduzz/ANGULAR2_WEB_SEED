@@ -1,0 +1,81 @@
+[{
+        "id": 1,
+        "name": "Bankacılık",
+        "subCategories": [{
+                "id": 2,
+                "name": "Garanti",
+                "parentId": 1,
+                "docTypeId": 2,
+                "totalDocCount": 11321,
+                "docCounts": [{
+                    "docTypeId": 2,
+                    "count": 26
+                }]
+            },
+            {
+                "id": 3,
+                "name": "Akbank",
+                "parentId": 1,
+                "docTypeId": 3,
+                "totalDocCount": 11,
+                "docCounts": [{
+                        "docTypeId": 2,
+                        "count": 1
+                    },
+                    {
+                        "docTypeId": 3,
+                        "count": 218
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Vakıfbank",
+                "parentId": 1,
+                "docTypeId": 5,
+                "totalDocCount": 33,
+                "docCounts": [{
+                        "docTypeId": 2,
+                        "count": 218
+                    },
+                    {
+                        "docTypeId": 5,
+                        "count": 218
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Kredi Kartı Sektörü",
+        "subCategories": [{
+                "id": 7,
+                "name": "Bonus",
+                "parentId": 6,
+                "docTypeId": 0,
+                "totalDocCount": 321,
+                "docCounts": [{
+                        "docTypeId": 2,
+                        "count": 9
+                    },
+                    {
+                        "docTypeId": 1,
+                        "count": 218
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Master Card",
+                "parentId": 6,
+                "docTypeId": 0,
+                "totalDocCount": 321321,
+                "docCounts": [{
+                    "docTypeId": 2,
+                    "count": 1
+                }]
+            }
+        ]
+    }
+]

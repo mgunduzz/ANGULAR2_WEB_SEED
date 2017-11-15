@@ -1,0 +1,37 @@
+.agenda-list {
+    padding-top: 2%;
+    padding-right: 1%;
+    padding-left: 1%;
+    font-size: 14px;
+    max-height: 720px;
+    overflow: auto;
+}
+
+.table thead {
+    font-size: 12px;
+}
+
+.table tbody {
+    font-size: 11px;
+}
+
+.table tr {
+    cursor: pointer;
+}
+
+body {
+    padding: 0 !important;
+}
+
+
+.table-no-field {
+    max-width: 40px;
+}
+
+.table-date-field {
+    max-width: 100px;
+}
+
+.table-title-field {
+    width: 80%;
+}

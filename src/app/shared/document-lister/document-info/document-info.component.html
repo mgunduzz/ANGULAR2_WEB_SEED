@@ -1,0 +1,26 @@
+﻿<div style="display: flex;" class="justify-content-end total-count" *ngIf="!basketData">
+
+  <!--<div class="btn-group" ngbRadioGroup name="radioBasic" [(ngModel)]="isShowInfoGraphic" (ngModelChange)="onToggleInfoChange()" style="margin-left: 10px;margin-bottom: 5px;">
+    <label ngbButtonLabel class=" btn-outline-primary" style="padding: .25rem .5rem; box-shadow: none !important;" ngbTooltip="Haber Listesi">
+      <input ngbButton type="radio" [value]="false">
+      <i class="fa fa-list-alt" aria-hidden="true"></i>
+    </label>
+    <label ngbButtonLabel class="btn-sm btn-outline-primary" style="padding: .25rem .5rem; box-shadow: none !important;" ngbTooltip="Özet Görünüm">
+      <input ngbButton type="radio" [value]="true">
+      <i class="fa fa-pie-chart" aria-hidden="true"></i>
+    </label>
+  </div>-->
+
+  <div class="row justify-content-end" style="width: 100%" *ngIf="!isShowInfoGraphic">
+    <div *ngFor="let item of mecraCount" class="label" [ngClass]="'DOCUMENT_TYPE_ICON.'+item.key |  translate">
+      <span *ngIf="mecraCount.length>0" ngbTooltip="{{'DOCUMENT_TYPE.'+item.key | translate}} {{item.value}}">{{('DOCUMENT_TYPE.'+item.key | translate).substr(0,1)}} | {{item.value}}</span>
+    </div>
+    <div class="label totalCount">
+      <span ngbTooltip="{{'DOCUMENT_LISTER.totalCount' | translate}}  {{totalDocCount.value.totalCount}}">{{'DOCUMENT_LISTER.totalCount' | translate}}  | {{totalDocCount.value.totalCount}}</span>
+    </div>
+  </div>
+</div>
+<span class="total-count" *ngIf="basketData">
+  {{basketData.sepetAdi}}  {{'BASKET_LISTER.basketName' | translate}}   {{totalDocCount.value.totalCount}} {{'BASKET_LISTER.totalItemCount'| translate}}
+</span> 
+

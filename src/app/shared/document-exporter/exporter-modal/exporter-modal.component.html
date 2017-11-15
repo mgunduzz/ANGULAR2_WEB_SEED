@@ -1,0 +1,100 @@
+
+<div class="modal-header">
+    <h6 class="modal-title">{{'EXPORTER_MODAL.'+exportType | translate}}</h6>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+
+
+    <div class="pdf" *ngIf="exportType==='pdf'">
+
+        <div class="export-content" (click)="IsDownloadDocumentPdfFile.click()" *ngIf="!(otherSetting=='fromDocView')">
+            <input type="checkbox" [(ngModel)]="dataModal.IsDownloadDocumentPdfFile" #IsDownloadDocumentPdfFile (click)="dataModal.IsDownloadDocumentPdfFile=!dataModal.IsDownloadDocumentPdfFile;(dataModal.IsDownloadDocumentPdfFile?dataModal.isCover=false:'');$event.stopPropagation()">
+            <span>{{'EXPORTER_MODAL.multiPdf' | translate}} </span>
+        </div>
+
+        <div class="export-content" (click)="dataModal.isCover=!dataModal.isCover" [style.background-color]="dataModal.isCover?'#f1f1f1':''" [ngClass]="{'disable-parent-cat': dataModal.IsDownloadDocumentPdfFile}">
+            <input type="checkbox" [(ngModel)]="dataModal.isCover" (click)="dataModal.isCover=!dataModal.isCover;$event.stopPropagation()">
+            <span>{{'EXPORTER_MODAL.isCover' | translate}}</span>
+        </div>
+
+        <div class="isCover" *ngIf="dataModal.isCover" [ngClass]="{'disable-parent-cat': dataModal.IsDownloadDocumentPdfFile}">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            <span>{{'EXPORTER_MODAL.reportTag' | translate}}</span>
+            <input type="text" [(ngModel)]="dataModal.reportTag">
+        </div>
+
+
+
+        <div class="export-content" (click)="dataModal.highlight=!dataModal.highlight">
+            <input type="checkbox" [(ngModel)]="dataModal.highlight" (click)="dataModal.highlight=!dataModal.highlight;$event.stopPropagation()">
+            <span>{{'EXPORTER_MODAL.highlight' | translate}}</span>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+    <div class="pdf" *ngIf="exportType==='docViewerPdf'">
+
+        <div class="export-content" (click)="dataModal.allPage=true">
+            <input type="radio" name="food" (click)="dataModal.allPage=true;$event.stopPropagation()" [(ngModel)]="dataModal.allPage" [value]="true">{{'EXPORTER_MODAL.allPage' | translate}}<br>
+        </div>
+        <div class="export-content" (click)="dataModal.allPage=false">
+            <input type="radio" name="food" [(ngModel)]="dataModal.allPage" (click)="dataModal.allPage=false;$event.stopPropagation()" [value]="false">{{'EXPORTER_MODAL.onlyOnePage' | translate}}<br>
+        </div>
+        <div class="export-content" (click)="dataModal.highlight=!dataModal.highlight">
+            <input type="checkbox" [(ngModel)]="dataModal.highlight" (click)="dataModal.highlight=!dataModal.highlight;$event.stopPropagation()">
+            <span>{{'EXPORTER_MODAL.highlight' | translate}}</span>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="mizanpaj" *ngIf="exportType==='mizanpaj'">
+
+        <span>{{'EXPORTER_MODAL.reportTag' | translate}}</span>
+        <input type="text" [(ngModel)]="dataModal.reportTag">
+
+    </div>
+
+    <div class="ppt" *ngIf="exportType==='ppt' || exportType==='word'">
+
+        <div class="export-content" (click)="dataModal.highlight=!dataModal.highlight;$event.stopPropagation()">
+            <input type="checkbox" [(ngModel)]="dataModal.highlight" (click)="dataModal.highlight=!dataModal.highlight;$event.stopPropagation()">
+            <span>{{'EXPORTER_MODAL.highlight' | translate}}</span>
+        </div>
+
+    </div>
+
+    <div class="ppt" *ngIf="exportType==='analysisExcel'">
+
+        <div class="export-content" (click)="dataModal.isAddDocuments=!dataModal.isAddDocuments;$event.stopPropagation()">
+            <input type="checkbox" [(ngModel)]="dataModal.isAddDocuments" (click)="dataModal.isAddDocuments=!dataModal.isAddDocuments;$event.stopPropagation()">
+            <span>{{'EXPORTER_MODAL.isAddDocuments' | translate}}</span>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+<div class="modal-footer">
+
+    <button type="button" class="btn btn-sm btn-outline-primary" (click)="exportClick(dataModal)">
+        <i class="fa fa-download fa-2 " aria-hidden="true"></i>
+        {{'EXPORTER_MODAL.'+exportType | translate}}
+    </button>
+
+</div>

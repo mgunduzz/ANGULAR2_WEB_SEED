@@ -1,0 +1,38 @@
+.services {
+    font-size: 14px;
+    padding: 2%;
+}
+
+.services ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+.services ul li {
+    display: inline-block;
+    margin: 10px;
+    padding: 3%;
+    width: 40%;
+    text-align: center;
+    transition: all .1s ease-in-out;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+.services ul li:hover {
+    background-color: #eceeef;
+}
+
+.service-item {
+    text-align: -webkit-center;
+}
+
+.icon-set {
+    width: 45px;
+}
+
+.icon-title {
+    white-space: nowrap;
+}

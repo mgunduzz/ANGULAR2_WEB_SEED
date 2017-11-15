@@ -1,0 +1,13 @@
+﻿<div class="mail-sender-modal">
+  <div class="modal-header  " style="width: 100%;">
+
+    <div>{{ 'MAILING.SEND_MAIL_SELECT_NEWS' | translate }}</div>
+
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mail-sender-component [documents]="documents"></mail-sender-component>
+  </div>
+</div>

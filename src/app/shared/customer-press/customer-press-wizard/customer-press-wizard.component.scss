@@ -1,0 +1,54 @@
+body {
+    padding: 0 !important;
+}
+
+.card {
+    height: 710px !important;
+}
+
+.samplePage, .samplePage td {
+    color: #333333;
+    background-color: #efefef;
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+#tabloC tr.baslik td {
+    background-color: #efefef;
+    border-bottom: 1px solid _bgColor_;
+    color: maroon;
+    font-weight: bold;
+}
+
+#tabloC td {
+    background-color: #dfdfdf;
+    border-bottom: 1px solid _bgColor_;
+    padding: 0.5em;
+}
+
+#paging a {
+    display: inline;
+    width: 20px;
+    border: 1px solid #dddddd;
+    margin: 2px;
+}
+
+#samplePage a {
+    color: #336699;
+}
+
+.btn {
+    /*margin-top: 15%;*/
+}
+
+
+.pre-nxt-button {
+    margin-top: 45%;
+    width: 15%;
+}
+
+
+.errorMessage{
+        padding: 8%;
+
+}

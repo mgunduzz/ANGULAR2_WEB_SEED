@@ -1,0 +1,12 @@
+<div class="services">
+  <ul>
+    <li *ngFor="let serviceItem of ourServicesItems" (click)="serviceClick(serviceItem)">
+      <div class="service-item">
+        <img  [style.width]="iconWidth+'px'" src="/assets/img/our-services/{{serviceItem}}.png" data-toggle="tooltip" data-placement="bottom" title="{{'OUR_SERVICES.'+serviceItem | translate}}">
+        <span class="icon-title">
+          {{'OUR_SERVICES.'+serviceItem | translate}}</span>
+      </div>
+  </ul>
+  
+
+</div>

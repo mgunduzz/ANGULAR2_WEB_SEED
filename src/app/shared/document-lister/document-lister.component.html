@@ -1,0 +1,9 @@
+<div *ngIf="docListenerData.totalCount.value.totalCount>0">
+  <div style="margin-left: 0.5%;">
+    <document-info [totalDocCount]="docListenerData.totalCount" [basketData]="basketData" [listType]="listType"></document-info>
+  </div>
+  <div>
+    <document-list [basketCategories]="basketCategories" [basketData]="basketData" [documentData]="docListenerData" [currentPage]="currentPage" [isBasket]="isBasket" [isSimpleList]="isSimpleList" [listType]="listType"></document-list>
+  </div>
+</div>
+ 

@@ -1,0 +1,61 @@
+.dropdown-menu {
+    display: block !important;
+}
+
+ngb-datepicker-navigation-select {
+    color: red !important;
+}
+
+.calendar {
+    padding: 5px;
+}
+
+.time-picker {
+    font-size: 12px !important;
+}
+
+.input-group {
+    cursor: text;
+}
+
+.range_inputs-for-mobile {
+    display: none;
+}
+
+.main-date-filter {
+    display: flex;
+}
+
+.ranges {
+    width: max-content;
+    width: -moz-max-content;
+}
+
+.datepicker-i18n {
+    display: flex;
+}
+
+@media screen and (max-width: 767px) {
+    .range_inputs-for-mobile {
+        display: unset;
+        margin-left: 8%;
+    }
+    .ranges {
+        width: unset;
+    }
+
+    .range_inputs {
+        display: none;
+    }
+
+    .main-date-filter {
+        display: unset;
+    }
+}
+
+
+@media screen and (max-width: 540px) {
+    .datepicker-i18n {
+        display: none;
+    }
+}

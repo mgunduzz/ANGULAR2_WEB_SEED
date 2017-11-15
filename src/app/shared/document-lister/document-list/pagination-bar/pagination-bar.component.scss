@@ -1,0 +1,135 @@
+.pointer {
+    cursor: pointer;
+}
+
+a {
+    display: inline;
+    text-align: center;
+}
+
+.pagination {
+    margin-top: 5px;
+}
+
+.dropdown-menu-small {
+    min-width: 5rem !important;
+}
+
+@media(max-width:768px) {
+    .sm-margin {
+        margin-top: 20px;
+    }
+}
+
+@media(max-width:768px) {
+    .center-pagination {
+        margin-top: 5px;
+        -webkit-box-pack: center !important;
+        -webkit-justify-content: center !important;
+        -ms-flex-pack: center !important;
+        justify-content: center !important;
+    }
+
+    .hide-pagination {
+        display: none;
+    }
+}
+
+
+@media(max-width:1024px) {
+
+    .input-left {
+        margin-left: 100px !important;
+        color: red !important;
+    }
+}
+
+.page-input {
+    max-width: 50px;
+}
+
+
+@media(max-width:765px) {
+    .nextline-margin {
+        margin-top: 15px;
+    }
+}
+
+@media(max-width:900px ) and (min-width:766px ) {
+    a:not([href]):not([tabindex]) {
+        padding: 4px;
+    }
+
+    .page-input {
+        max-width: 25px;
+    }
+
+    .input-margin {
+        margin: 0;
+        padding: 0;
+    }
+
+    .nextline-margin {
+        padding: 0px;
+    }
+
+    .input-page-count {
+        padding: 0;
+    }
+}
+
+@media(min-width:1366px) and (max-width:1400px) {
+    .pagination-page-view-count {
+       
+    }
+}
+
+
+
+
+@media (max-width:1024px) {
+    .pagination-go {
+        float: right;
+    }
+}
+
+.pagination-bar-button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: rgba(34, 38, 41, 0.86) !important;
+}
+
+.pagination-bar-button:hover {
+    background-color: #e9ecef;
+    border-color: #ddd;
+}
+
+.pagination-bar-button:active {
+    background-color: #e9ecef !important;
+    border-color: #ddd !important;
+}
+
+.pagination-bar-button:focus {
+    box-shadow: 0 0 0 1px rgba(185, 185, 185, 0.5) !important;
+}
+
+.btn-outline-primary.active, .btn-outline-primary:active, .show > .btn-outline-primary.dropdown-toggle {
+    background-color: #e9ecef;
+}
+
+@media (min-width:1025px) and (max-width:1365px){
+    .pagination-pages {
+        min-width: 69%;
+    }
+
+    .pagination-page-view-count {
+        max-width: 13%;
+    }
+}
+@media (min-width:1366px) {
+  
+
+    .pagination-page-view-count {
+        max-width: 14% !important;
+    }
+}

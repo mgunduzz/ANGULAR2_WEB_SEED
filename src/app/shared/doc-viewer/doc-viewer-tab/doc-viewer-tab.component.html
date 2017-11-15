@@ -1,0 +1,7 @@
+<div class="doc-viewer-toolbar" >
+  <doc-viewer-toolbar style="width: 100%;" (changeCurrentDoc)="changeCurrentDoc($event)" [documents]="documents" [docIndex]="documentIndex" [isTextView]="isTextView" [publicView]="publicView"  [searchModal]="searchModal" [showMultipleDocument]="showMultipleDocument"  *ngIf="currentDocument.streams"></doc-viewer-toolbar>
+  
+</div>
+<div class="doc-viewer-content" [ngClass]="{ 'public-view' : publicView }"  >
+  <app-doc-viewer [document]="currentDocument" *ngIf="currentDocument.streams" [isTranslate]="isTranslate" ></app-doc-viewer>
+</div>

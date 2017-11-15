@@ -1,0 +1,40 @@
+﻿
+/****************************/
+/* BLOCK UI OVERRIDE STYLES */
+/****************************/
+
+/* Block UI Wrapper (Backdrop) */
+div.block-ui-wrapper {
+     background-color: rgba(212, 205, 205, 0.4) !important;}
+
+/* Spinner */
+div.block-ui-wrapper .loader {
+       width: 6em;
+    height: 6em;
+    margin: 8px auto;
+    border-top: 5px solid rgb(60, 67, 85);
+    border-right: 5px solid rgb(254, 254, 254);
+    border-bottom: 5px solid rgb(254, 254, 254);
+    border-left: 5px solid #ffffff;
+    
+}
+
+/* Message */
+div.block-ui-spinner .message {
+  color: #3c4355;  
+  font-size:12px;
+}
+
+
+.loader-full {
+    text-align: center;
+    display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 555;
+    opacity: 0.9;
+    background-color: white;
+    padding: 10px;
+    padding-top: 50px;
+    height: 100%;
+}

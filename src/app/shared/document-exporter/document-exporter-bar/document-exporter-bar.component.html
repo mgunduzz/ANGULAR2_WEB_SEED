@@ -1,0 +1,16 @@
+
+
+
+
+<div class="shadow" *ngIf="isExporterShow" [@shrinkOut]>
+  <div class="selectedDocs"> <span>{{'EXPORTER.selectedDocCount'| translate}} {{selectedDocuments.length}}</span> <a (click)="removeSelectedDocsClick()"> {{'EXPORTER.removeSelectedDoc'| translate}} </a></div>
+  <ul class="exportItems">
+    <li *ngFor="let item of exporterItemsOnlyWork">
+
+      <button type="button" class="btn btn-link icon-set" (click)="slectedDocumentsExpoertClick(item.m)" ngbTooltip="{{'EXPORTER.'+item.m | translate}}"> <i style="font-size: 24px;" [style.color]="item.c" class="fa {{item.i}} fa-2 " aria-hidden="true"></i></button>
+
+    </li>
+  </ul>
+</div>
+
+<iframe *ngIf="iframeShow" [src]="securedAgendaLink" style="display: none;"></iframe>

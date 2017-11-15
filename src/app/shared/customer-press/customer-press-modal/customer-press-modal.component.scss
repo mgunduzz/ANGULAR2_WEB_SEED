@@ -1,0 +1,93 @@
+.customer-press {
+    font-size: 12px;
+    border-bottom: 1px solid #eceeef;
+}
+
+.meta-data-press {
+    /*box-shadow: 0px 0px 4px 0px #eceeef;*/
+    span {
+        padding: 1%;
+    }
+}
+
+.press-dropdown {
+    button {
+        padding: 3px;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+}
+
+.dropdown-menu-small {
+    min-width: 5rem !important;
+    left: auto;
+
+}
+
+
+#dropdownBasi2 {
+    font-size: 14px;
+}
+
+
+.new-press {
+    text-align: end;
+}
+
+
+.add-doc-to-press {
+    display: inline-block;
+}
+
+.press-setting {
+    padding-left: 1%;
+    padding-top: 2%;
+    padding-right: 1%;
+    padding-bottom: 2%;
+}
+
+.selectedDocuments {
+    font-size: 11px;
+    overflow: auto;
+    max-height: 555px;
+    padding: 5px;
+}
+
+
+.removeSelections {
+    padding: 0 3% 1%;
+    cursor: pointer;
+    color: #178ce2;
+    font-size: 12px;
+}
+
+.removeSelections:hover {
+    color: #0f5080;
+}
+
+.selected-docs {
+    font-size: 11px;
+    font-style: italic;
+}
+
+.cs-page {
+    padding: 2% 1% 3% 2%;
+}
+
+.removeSelections-main {
+    text-align: end;
+}
+
+.press-doc-lister {
+    padding: 0;
+}
+
+.input-group {
+    width: 25% !important;
+    padding-top: 1% !important;
+}
+
+
+.popover {
+    max-width: 350px !important;
+}

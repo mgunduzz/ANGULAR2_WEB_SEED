@@ -1,0 +1,323 @@
+﻿<div class="mail-sender-component">
+  <div class="options-list" *blockUI="'mail-send'">
+    <!-- MAIL SENDER FORM -->
+    <div style="font-size: 13px;margin-bottom: 6px;">{{ documents.length }} <span>{{ 'MAILING.DOCUMENT_SELECTED' | translate }}</span></div>
+    <form class="mail-sender-form" [formGroup]="mailSenderForm">
+      <!-- SUBJECT -->
+      <div class="form-group">
+        <input class="form-control form-control-sm input-with-warning-star" type="text" id="subject" name="subject" formControlName="subject" [(ngModel)]="mailSendModel.subject" placeholder="{{ 'MAILING.SUBJECT' | translate }}" required="" autofocus="">
+      </div>
+
+      <hr />
+
+      <!-- Send Type (Link,Attachment,Body) -->
+      <div class="form-check row mail-send-types">
+
+        <span>{{ 'MAILING.SENDING_TYPE' | translate }}</span>
+        <form action="">
+          <ul>
+            <li>
+              <!-- isLink -->
+              <label class="form-check-label" style="padding-left: 0;">
+                <!--<input type="checkbox" [(ngModel)]="mailSendModel.isLink" class="form-check-input" name="isLink" [ngModelOptions]="{standalone: true}">-->
+                <input type="radio" [(ngModel)]="isLinkOrBody" name="link" value="link">
+                <span>Link</span>
+              </label>
+
+            </li>
+
+            <li>
+              <!-- isBody -->
+              <label class="form-check-label">
+                <!--<input type="checkbox" [(ngModel)]="mailSendModel.isBody" class="form-check-input" name="isAttachment" [ngModelOptions]="{standalone: true}">-->
+                <input type="radio" [(ngModel)]="isLinkOrBody" name="gövde" value="body">
+
+                <span>{{ 'MAILING.BODY' | translate }}</span>
+              </label>
+
+            </li>
+
+            <li>
+              <!-- isAttachment -->
+              <label class="form-check-label">
+                <input type="checkbox" [(ngModel)]="mailSendModel.isAttachment" class="form-check-input" name="isAttachment" [ngModelOptions]="{standalone: true}">
+                <span>{{ 'MAILING.ATTACHMENT' | translate }}</span>
+              </label>
+
+            </li>
+          </ul>
+
+        </form>
+      </div>
+
+      <hr />
+
+      <!-- Mail Showed Style -->
+      <div class="form-check mail-send-show-types">
+        <form action="">
+          <ul>
+            <li>
+              <label>{{ 'MAILING.SHOW_TYPE' | translate }}</label>
+            </li>
+
+            <li>
+              <!-- SHOW_ONLY_CATEGORIES -->
+              <label class="form-check-label" style="padding-left: 0;">
+                <input type="radio" [(ngModel)]="showType" name="onlyCategories" value="0">
+                <!--<input type="checkbox" [(ngModel)]="mailSendModel.isOnlyShowCategories" class="form-check-input" name="isParentCategoryShowed" [ngModelOptions]="{standalone: true}">-->
+                <span>{{ 'MAILING.SHOW_ONLY_CATEGORIES' | translate }}</span>
+              </label>
+              <span class="hide-mobile" #showType0="ngbPopover" (click)="showType1.close();showType2.close();showType3.close();" [ngbPopover]="popContent0" triggers="mouseenter:mouseleave" popoverTitle="{{ 'MAILING.SHOW_ONLY_CATEGORIES' | translate }}" placement="right" style="cursor: pointer;">
+                <i class="fa fa-info-circle" aria-hidden="true" style="margin-left: 5px;"></i>
+              </span>
+              <ng-template #popContent0 style="max-width: 400px;">
+                <img src="../../../../assets/img/mail-format-previews/only-categories.png" />
+              </ng-template>
+            </li>
+
+            <li>
+              <!-- SHOW_SUB_CATEGORIES -->
+              <label class="form-check-label" style="padding-left: 0;">
+                <input type="radio" [(ngModel)]="showType" name="subCategory" value="1">
+                <!--<input type="checkbox" [(ngModel)]="mailSendModel.isSubcategoryShow" class="form-check-input" name="isParentCategoryShowed" [ngModelOptions]="{standalone: true}">-->
+                <span>{{ 'MAILING.SHOW_SUB_CATEGORIES' | translate }}</span>
+              </label>
+              <span class="hide-mobile" #showType1="ngbPopover" (click)="showType0.close();showType2.close();showType3.close();" [ngbPopover]="popContent1" triggers="mouseenter:mouseleave" popoverTitle="{{ 'MAILING.SHOW_SUB_CATEGORIES' | translate }}" placement="right" style="cursor: pointer;">
+                <i class="fa fa-info-circle" aria-hidden="true" style="margin-left: 5px;"></i>
+              </span>
+              <ng-template #popContent1>
+                <img src="../../../../assets/img/mail-format-previews/show-sub-categories.png" />
+              </ng-template>
+            </li>
+
+            <li>
+              <!-- SHOW_NEWS -->
+              <label class="form-check-label" style="padding-left: 0;">
+                <input type="radio" [(ngModel)]="showType" name="documentShow" value="2">
+                <!--<input type="checkbox" [(ngModel)]="mailSendModel.isDocumentsShow" class="form-check-input" name="isSubCategoryShowed" [ngModelOptions]="{standalone: true}">-->
+                <span>{{ 'MAILING.SHOW_NEWS' | translate }}</span>
+              </label>
+              <span class="hide-mobile" #showType2="ngbPopover" (click)="showType0.close();showType1.close();showType3.close();" [ngbPopover]="popContent2" triggers="mouseenter:mouseleave" popoverTitle="{{ 'MAILING.SHOW_NEWS' | translate }}" placement="right" style="cursor: pointer;">
+                <i class="fa fa-info-circle" aria-hidden="true" style="margin-left: 5px;"></i>
+              </span>
+              <ng-template #popContent2>
+                <img src="../../../../assets/img/mail-format-previews/show-documents.png" />
+              </ng-template>
+            </li>
+            <li>
+              <!-- SHOW_NEW_MEDIAS -->
+              <label class="form-check-label" style="padding-left: 0;">
+                <input type="radio" [(ngModel)]="showType" name="documentMediaShow" value="3">
+                <!--<input type="checkbox" [(ngModel)]="mailSendModel.isDocumentsMediasShow" class="form-check-input" name="isDocumentMediaShowed" [ngModelOptions]="{standalone: true}">-->
+                <span>{{ 'MAILING.SHOW_NEW_MEDIAS' | translate }}</span>
+              </label>
+              <span class="hide-mobile" #showType3="ngbPopover" (click)="showType0.close();showType1.close();showType2.close();" [ngbPopover]="popContent3" triggers="mouseenter:mouseleave" popoverTitle="{{ 'MAILING.SHOW_NEW_MEDIAS' | translate }}" placement="right" style="cursor: pointer;">
+                <i class="fa fa-info-circle" aria-hidden="true" style="margin-left: 5px;"></i>
+              </span>
+              <ng-template #popContent3>
+                <img src="../../../../assets/img/mail-format-previews/show-medias.png" />
+              </ng-template>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </form>
+  </div>
+
+  <div class="mail-list" style="background-color: #f9f9f9;">
+    <ngb-tabset (tabChange)="beforeTabChange($event)" *ngIf="isShowMailList">
+      <!-- MAIL LIST PROCESS -->
+      <ngb-tab [id]="'mailList'" title="{{ 'MAILING.MAIL_LIST' | translate }}">
+        <ng-template ngbTabContent>
+          <div *blockUI="'mail-list'">
+            <!-- ADD NEW MAİL -->
+            <div class="new-mail">
+              <form [formGroup]="newMailForm" (ngSubmit)="addNewMail()" style="margin: 0;">
+                <div class="new-mail-row">
+                  <!-- NAME -->
+                  <div class="new-mail-name">
+                    <input class="form-control form-control-sm input-with-warning-star" type="text" id="name" name="name" formControlName="name" [(ngModel)]="newMailModel.name" placeholder="{{ 'MAILING.NAME' | translate }}" required="" autofocus="">
+                  </div>
+
+                  <!-- SENDER NAME -->
+                  <div class="new-mail-email">
+                    <input class="form-control form-control-sm input-with-warning-star" type="text" id="email" name="email" formControlName="email" [(ngModel)]="newMailModel.email" placeholder="{{ 'MAILING.MAIL' | translate }}" required="" autofocus="">
+                  </div>
+
+                  <div class="new-mail-submit">
+                    <button type="submit " class="btn interpress-icon-button" [disabled]="!newMailForm.valid">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Ekle
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <ul class="mail-groups scrolling-ul">
+
+              <li *ngFor="let group of mailGroups">
+                <div class="mail-group">
+                  <div class="header noselect mail-group-row" style="margin: 0;" (click)="groupClick(group,mailGroups)" [ngClass]="{ 'header-active' : group.isShow  }">
+
+                    <div class="group-row-check">
+                      <label class="form-check-label ">
+                        <input type="checkbox" class="form-check-input" (click)="$event.stopPropagation()" name="isAllMailsSelected" [(ngModel)]="group.isAllMailsSelected" (ngModelChange)="groupIsSelectedAllChange(group)" [ngModelOptions]="{standalone: true}">
+                      </label>
+                    </div>
+
+                    <div class="group-row-info" style="text-align: left;  ">
+                      <span *ngIf="!group.hideHeader">{{ group.name }}</span>
+                      <span *ngIf="group.selectedCount > 0">({{ group.selectedCount }})</span>
+
+                      <label class="form-check-label " *ngIf="group.hideHeader" (click)="$event.stopPropagation()" style="padding-left: 0;">
+                        <input type="text" class="form-check-input" [(ngModel)]="group.searchWord" (click)="$event.stopPropagation()" style="margin: 0;">
+                      </label>
+                    </div>
+
+                    <div class="group-row-search">
+                      <i class="fa fa-search" aria-hidden="true" (click)="$event.stopPropagation(); group.hideHeader = !group.hideHeader "></i>
+                    </div>
+
+
+
+                  </div>
+                  <div class="content" [hidden]="!group.isShow">
+                    <div *ngFor="let mail of group.mailList | mailSearch : group.searchWord ;let i = index" class="mail-row" style="margin: 0; height: 30px;">
+                      <div class="mail-row-check">
+                        <label class="form-check-label ">
+                          <input type="checkbox" class="form-check-input" name="isAllMailsSelected" [(ngModel)]="mail.isSelected" (ngModelChange)="mailSelectedChange(group,mail)" [ngModelOptions]="{standalone: true}">
+                        </label>
+                      </div>
+
+                      <div class="mail-row-name" style="text-align: left; line-height: 27px;display: inline-block;">
+                        {{ mail.name }}
+                      </div>
+                      <div class="mail-row-email" style="text-align: left; line-height: 27px;display: inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                        {{ mail.email }}
+                      </div>
+
+                      <div class="mail-row-delete" style="padding: 0;">
+                        <span>
+                          <button (click)="$event.stopPropagation();confirmationClick(i)"
+                                  class="btn btn-sm"
+                                  mwlConfirmationPopover
+                                  #confirms="confirmationPopover"
+                                  [title]="mailConfirmTitle"
+                                  [message]="mailDeleteMessage"
+                                  placement="bottom"
+                                  (confirm)="deleteMail(group,mail)"
+                                  (cancel)="cancelClicked = true">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                        </span>
+
+                      </div>
+                    </div>
+
+                    <div *ngIf="group.mailList.length == 0">
+                      <label>- {{ 'MAILING.THERE_IS_NO_MAIL' | translate }}</label>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="mail-groups">
+              <li style="padding-top: 10px;">
+                <span>Toplam {{ selectedMailCount }}</span>
+                <span>{{ 'MAILING.MAIL_SELECTED' | translate }}</span>
+                <button type="submit" (click)="sendMail()" style="font-size: 12px;" class="btn btn-primary get-selected-mails-button" [disabled]="!mailSenderForm.valid || selectedMailCount == 0">
+                  <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                  {{ 'MAILING.SEND' | translate }}
+                </button>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </ngb-tab>
+
+      <!-- MAIL GROUP LIST PROCESS -->
+      <ngb-tab [id]="'groupProcess'" title="{{ 'MAILING.GROUP_PROCESS' | translate }}">
+        <ng-template ngbTabContent>
+          <div *blockUI="'mail-group-list'">
+            <div class="new-group">
+              <form [formGroup]="newGroupForm" (ngSubmit)="addNewGroup()">
+                <!-- NAME -->
+                <div class="new-group-row">
+                  <div class="new-group-name">
+                    <input class="form-control form-control-sm input-with-warning-star" type="text" id="name" name="name" formControlName="name" [(ngModel)]="newGroupModel.name" placeholder="{{ 'MAILING.GROUP_NAME' | translate }}" required="" autofocus="">
+                  </div>
+
+                  <div class="new-group-submit">
+                    <button type="submit " class="btn interpress-icon-button  " [disabled]="!newGroupForm.valid">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Ekle
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="process-mail-groups">
+              <ul class="mail-groups ">
+                <li *ngFor="let group of mailGroupsForEdit;let i = index;">
+                  <div class="mail-group">
+                    <div class="header noselect" (click)="groupClick(group,mailGroupsForEdit)" [ngClass]="{ 'header-active' : group.isShow  }">
+                      <label class="form-check-label" style="margin-left: 10px;">
+                        <input type="checkbox" class="form-check-input" (click)="$event.stopPropagation()" name="isAllMailsSelected" [(ngModel)]="group.isAllMailsSelected" (ngModelChange)="groupIsSelectedAllChange(group)" [ngModelOptions]="{standalone: true}">
+                      </label>
+                      <span style="padding-left: 12px;">{{ group.name }}</span>
+                      <span *ngIf="group.selectedCount > 0">({{ group.selectedCount }})</span>
+
+
+
+                      <button (click)="$event.stopPropagation();" class="btn btn-sm  " mwlConfirmationPopover
+                              ngbTooltip="Grubu Sil" placement="bottom"
+                              [title]="groupConfirmTitle"
+                              [message]="groupDeleteMessage"
+                              (confirm)="deleteMailGroup(group,i)"
+                              (cancel)="groupClick(group,mailGroupsForEdit)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+
+
+
+                      <button (click)="$event.stopPropagation();" *ngIf="group.isShow" class="btn btn-sm  last-child"
+                              ngbTooltip="Grubu Güncelle" placement="bottom"
+                              mwlConfirmationPopover
+                              [title]="groupConfirmTitle"
+                              [message]="groupUpdateMessage"
+                              (confirm)="updateMailGroup(group);"
+                              (cancel)="groupClick(group,mailGroupsForEdit)">
+
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                      </button>
+
+
+                    </div>
+                    <div class="content" [hidden]="!group.isShow">
+                      <div *ngFor="let mail of group.mailList" style="display: flex; width: 100%;">
+                        <div>
+                          <label class="form-check-label noselect" style="margin-left: 10px;">
+                            <input type="checkbox" class="form-check-input" name="isAllMailsSelected" [(ngModel)]="mail.isSelected" (ngModelChange)="mailSelectedChange(group,mail)" [ngModelOptions]="{standalone: true}">
+
+                          </label>
+                        </div>
+
+                        <div class="col col-md-4" style="margin-left: 2px;">
+                          {{ mail.name }}
+                        </div>
+
+                        <div class="col">
+                          {{ mail.email }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

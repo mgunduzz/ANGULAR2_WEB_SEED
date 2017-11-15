@@ -1,0 +1,36 @@
+.meta-data-table td:first-child {
+    min-width: 30px;
+}
+
+.meta-data-table {
+    font-family: verdana;
+    font-size: 10px;
+
+    .bold-td {
+        font-weight: bold;
+    }
+}
+
+.left-space {
+    margin-left: 70px;
+}
+
+.show-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .show-mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 870px) {
+    .table-3 {
+        display: none;
+    }
+}

@@ -1,0 +1,10 @@
+
+<div *ngIf="isContentExist" style="overflow: scroll; max-height: 96%;">
+    <div [ngStyle]="{'color': color, 'font-size': size + 'px'}" style="word-wrap: break-word;" highlightText [highlightWordList]="highlightWordList" *ngIf="refresh">
+        {{stream.text}}
+    </div>
+</div>
+<div *ngIf="!isContentExist" style="text-align: center;     font-size: 300%;     color: cadetblue;  padding: 20%;">
+<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+<span> {{'TEXT_VIEWER.contetDoesntExits' | translate}}</span>
+</div>
